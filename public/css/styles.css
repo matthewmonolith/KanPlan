@@ -1,0 +1,23 @@
+.kanplan-board {
+    display: flex;
+}
+
+.kanplan-column {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.kanplan-column-title {
+    text-align: center;
+}
+
+.kanplan-column-tasks {
+    min-height: 200px;
+    background: #f0f0f0;
+    margin-top: 10px;
+}
+
+.kanplan-column button {
+    margin-top: 10px;
+}
