@@ -1,4 +1,4 @@
-const Todo = require('../models/todotask');
+const Todo = require('../models/Todo.js');
 
 module.exports = {
   getTodos: async (req, res) => {
@@ -12,9 +12,11 @@ module.exports = {
   createTodo: async (req, res) => {
     try {
         await Todo.create({
+            title: req.body.todoTitle,
             content: req.body.todoItem, 
             status: 'todo'
         })
+        console.log('Todo Added')
         res.redirect('/')
     } catch (error) {
         console.log(error);
