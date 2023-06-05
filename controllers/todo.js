@@ -11,7 +11,10 @@ module.exports = {
   },
   createTodo: async (req, res) => {
     try {
-        await Todo.create({todo: req.body.todoItem, status: 'todo'})
+        await Todo.create({
+            content: req.body.todoItem, 
+            status: 'todo'
+        })
         res.redirect('/')
     } catch (error) {
         console.log(error);
