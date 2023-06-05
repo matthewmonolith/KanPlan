@@ -21,3 +21,8 @@
 .kanplan-column button {
     margin-top: 10px;
 }
+
+.toDoForm {
+    display: flex;
+    flex-direction: column;
+}

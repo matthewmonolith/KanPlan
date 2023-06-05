@@ -15,7 +15,10 @@
             <div class="kanplan-column-tasks">
             <!--Display tasks here-->
             </div>
-            <button onclick="addTask()">Add Task</button>
+            <form class="toDoForm" action="/todos/createTodo" method='POST'>
+                <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+                <input type="submit" value="Add Item">
+            </form>
         </div>
 
         <div class="kanplan-column">
