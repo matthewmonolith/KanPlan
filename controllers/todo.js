@@ -3,7 +3,7 @@ const Todo = require('../models/todotask');
 module.exports = {
   getTodos: async (req, res) => {
     try {
-      const allTodos = await Todo.find({ status: 'todo' });
+      const allTodos = await Todo.find();
       res.render('index.ejs', {todos: allTodos})
     } catch (error) {
       console.log(error);
