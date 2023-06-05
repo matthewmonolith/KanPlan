@@ -78,7 +78,7 @@ async function markDoing(){ //function that moves todo task to the doing column
 }
 
 
-async function markDone(){ 
+async function markDone(){ //function to add task to the done column
     const todoId = this.parentNode.dataset.id
 
     const doneColumn = document.getElementsByClassName('kanplan-column-done')
