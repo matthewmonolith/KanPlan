@@ -22,21 +22,27 @@ module.exports = {
   },
   markTodo: async (req, res) => {
     try {
-
+        await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            status: 'todo'
+        })
     } catch (error) {
       console.log(error);
     }
   },
   markDoing: async (req, res) => {
     try {
-
+        await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            status: 'doing'
+        })
     } catch (error) {
       console.log(error);
     }
   },
   markDone: async (req, res) => {
     try {
-
+        await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            status: 'done'
+        })
     } catch (error) {
       console.log(error);
     }
