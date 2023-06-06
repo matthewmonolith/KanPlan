@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>KanPlan</title>
+</head>
+<body>
+    <h1>KanPlan Board</h1>
+    <div class="kanplan-board">
+        <div class="kanplan-column-todo">
+            <h2 class="kanplan-column-title">ToDo</h2>
+            <div class="kanplan-column-tasks">
+                <% todos.forEach(el => { %>
+                    <% if (el.status === 'todo') { %>
+                        <li class="li-todo" data-id='<%= el._id %>'>
+                            <span class="todo"><%= el.title %></span>
+                            <span class="del">Delete</span>
+                        </li>
+                    <% } else if (el.status === 'doing') { %>
+                        <li class="li-doing" data-id='<%= el._id %>'>
+                            <span class="doing"><%= el.title %></span>
+                            <span class="del">Delete</span>
+                        </li>
+                    <% } else if (el.status === 'done') { %>
+                        <li class="li-done" data-id='<%= el._id %>'>
+                            <span class="done"><%= el.title %></span>
+                            <span class="del">Delete</span>
+                        </li>
+                    <% } %>
+                <% }) %>
+                
+                <% /* %>
+                 <% todos.forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.status === todo ? 'todo' : 'not'%>'><%= el.todo %></span>
+                        <%el.addEventListener('click', markTodo)%>
+                        <span class='del'> Delete </span>
+                    </li>
+            <% }) %> 
+                <% */ %>
+            </div>
+            <form class="toDoForm" action="/todo/createTodo" method='POST'>
+                <input type="text" placeholder="Enter Todo Title" name="todoTitle">
+                <input type="text" placeholder="Enter Todo Content" name='todoItem'>
+                <input type="submit" value="Add Item">
+            </form>
+        </div>
+
+        <div class="kanplan-column-doing">
+            <h2 class="kanplan-column-title">Doing</h2>
+            <div class="kanplan-column-tasks">
+            <!--Display tasks here-->
+            </div>
+        </div>
+
+        <div class="kanplan-column-done">
+            <h2 class="kanplan-column-title">Done</h2>
+            <div class="kanplan-column-tasks">
+            <!--Display tasks here-->
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

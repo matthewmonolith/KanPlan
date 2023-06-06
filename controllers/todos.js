@@ -4,7 +4,7 @@ module.exports = {
   getTodos: async (req, res) => {
     try {
       const allTodos = await Todo.find();
-      res.render('index.ejs', {todos: allTodos})
+      res.render('todos.ejs', {todos: allTodos})
     } catch (error) {
       console.log(error);
     }
