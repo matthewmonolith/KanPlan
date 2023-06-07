@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>KanPlan</title>
 </head>
 <body>
     <h1>KanPlan Board</h1>
     <div class="kanplan-board">
-        <div class="kanplan-column-todo">
+        <div class="kanplan-column-todo column">
             <h2 class="kanplan-column-title">ToDo</h2>
             <div class="kanplan-column-tasks">
                 <% todos.forEach(el => { %>
                     <% if (el.status === 'todo') { %>
                         <li class="li-todo" data-id='<%= el._id %>'>
                             <span class="todo"><%= el.title %></span>
-                            <span class="del">Delete</span>
+                            <i class="fa-solid fa-delete-left"></i>
+                            <!-- <span class="del">Delete</span> -->
                         </li>
                     <% } else if (el.status === 'doing') { %>
                         <li class="li-doing" data-id='<%= el._id %>'>
@@ -45,18 +50,18 @@
             <form class="toDoForm" action="/todo/createTodo" method='POST'>
                 <input type="text" placeholder="Enter Todo Title" name="todoTitle">
                 <input type="text" placeholder="Enter Todo Content" name='todoItem'>
-                <input type="submit" value="Add Item">
+                <input type="submit" value="Add Item" class="submit">
             </form>
         </div>
 
-        <div class="kanplan-column-doing">
+        <div class="kanplan-column-doing column">
             <h2 class="kanplan-column-title">Doing</h2>
             <div class="kanplan-column-tasks">
             <!--Display tasks here-->
             </div>
         </div>
 
-        <div class="kanplan-column-done">
+        <div class="kanplan-column-done column">
             <h2 class="kanplan-column-title">Done</h2>
             <div class="kanplan-column-tasks">
             <!--Display tasks here-->
