@@ -31,28 +31,38 @@ h1 {
     min-height: 200px;
 }
 
-.toDoForm, .li-todo {
+.toDoForm {
     display: flex;
     flex-direction: column;
 }
 
 .li-todo {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
     margin: 15px;
-    padding: 5px;
+    padding: 10px;
     background: #fff;
     border-radius: 10px;
+}
+
+
+.li-todo .icon-container {
+    margin-left: auto;
 }
 
 .li-todo, .submit{
     cursor: pointer;
 }
 
+.fa-solid {
+    margin: 1px;
+}
 
-.li-todo .fa-delete-left {
+.li-todo .icon-container {
     visibility: hidden;
 }
 
-.li-todo:hover .fa-delete-left{
+.li-todo:hover .icon-container{
     visibility: visible;
 }

@@ -21,7 +21,10 @@
                     <% if (el.status === 'todo') { %>
                         <li class="li-todo" data-id='<%= el._id %>'>
                             <span class="todo"><%= el.title %></span>
-                            <i class="fa-solid fa-delete-left"></i>
+                            <div class="icon-container">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-delete-left"></i>
+                            </div>
                             <!-- <span class="del">Delete</span> -->
                         </li>
                     <% } else if (el.status === 'doing') { %>
