@@ -1,11 +1,26 @@
-.kanplan-board {
-    display: flex;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
-.kanplan-column {
+h1 {
+    margin-left: 20px;
+}
+
+.kanplan-board {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
     flex: 1;
-    padding: 10px;
+    padding: 5px;
+    background: #f0f0f0;
     border: 1px solid red;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 300px;
 }
 
 .kanplan-column-title {
@@ -14,15 +29,40 @@
 
 .kanplan-column-tasks {
     min-height: 200px;
-    background: #f0f0f0;
-    margin-top: 10px;
-}
-
-.kanplan-column button {
-    margin-top: 10px;
 }
 
 .toDoForm {
     display: flex;
     flex-direction: column;
+}
+
+.li-todo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+
+.li-todo .icon-container {
+    margin-left: auto;
+}
+
+.li-todo, .submit{
+    cursor: pointer;
+}
+
+.fa-solid {
+    margin: 1px;
+}
+
+.li-todo .icon-container {
+    visibility: hidden;
+}
+
+.li-todo:hover .icon-container{
+    visibility: visible;
 }
