@@ -17,7 +17,15 @@
         <div class="kanplan-column-todo column">
             <h2 class="kanplan-column-title">ToDo</h2>
             <div class="kanplan-column-tasks">
-                <% todos.forEach(el => { %>
+                <div class="kanplan-column-tasks">
+                    <% todos.forEach(el => { %>
+                        <li class="todoItem" data-id="<%= el._id %>">
+                          <span class="<%= el.status === 'todo' ? 'todo' : 'doing' %>"><%= el.todo %><%= el.title %></span>
+                          <i class="fa-solid fa-delete-left" id="del"></i>
+                        </li>
+                      <% }) %>
+                </div>
+                <!-- <% todos.forEach(el => { %>
                     <% if (el.status === 'todo') { %>
                         <li class="li-todo" data-id='<%= el._id %>'>
                             <span class="todo"><%= el.title %></span>
@@ -25,17 +33,15 @@
                                 <i class="fa-solid fa-pen-to-square"></i>
                                 <i class="fa-solid fa-delete-left"></i>
                             </div>
-                            <!-- <span class="del">Delete</span> -->
+                            
                         </li>
                     <% } else if (el.status === 'doing') { %>
                         <li class="li-doing" data-id='<%= el._id %>'>
                             <span class="doing"><%= el.title %></span>
-                            <span class="del">Delete</span>
                         </li>
                     <% } else if (el.status === 'done') { %>
                         <li class="li-done" data-id='<%= el._id %>'>
                             <span class="done"><%= el.title %></span>
-                            <span class="del">Delete</span>
                         </li>
                     <% } %>
                 <% }) %>
@@ -45,10 +51,9 @@
                     <li class='todoItem' data-id='<%=el._id%>'>
                         <span class='<%= el.status === todo ? 'todo' : 'not'%>'><%= el.todo %></span>
                         <%el.addEventListener('click', markTodo)%>
-                        <span class='del'> Delete </span>
                     </li>
             <% }) %> 
-                <% */ %>
+                <% */ %> -->
             </div>
             <form class="toDoForm" action="/todo/createTodo" method='POST'>
                 <input type="text" placeholder="Enter Todo Title" name="todoTitle">
@@ -71,6 +76,6 @@
             </div>
         </div>
     </div>
-    <script src="/public/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
