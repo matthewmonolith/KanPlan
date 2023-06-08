@@ -36,6 +36,10 @@ module.exports = {
         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
             status: 'doing'
         })
+        console.log('Marked as doing')
+        res.json({
+          status:'doing'
+        })
     } catch (error) {
       console.log(error);
     }
@@ -50,8 +54,11 @@ module.exports = {
     }
   },
   deleteTodo: async (req, res) => {
+    console.log(req.body.todoIdFromJSFile)
     try {
         await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+        console.log('Deleted Todo')
+            res.json('Deleted It')
     } catch (error) {
       console.log(error);
     }
