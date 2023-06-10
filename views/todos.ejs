@@ -17,67 +17,58 @@
         <div class="kanplan-column-todo column">
             <h2 class="kanplan-column-title">ToDo</h2>
             <div class="kanplan-column-tasks">
-                <div class="kanplan-column-tasks">
-                    <% todos.forEach(el => { %>
+                <% todos.forEach(el => {
+                    if(el.status === 'todo') { %>
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
-                          <span class="<%= el.status === 'todo' ? 'todo' : 'doing' %>"><%= el.todo %><%= el.title %></span>
-                          <div class="icon-container">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            <i class="fa-solid fa-delete-left" id="del"></i>
-                        </div>
-                        </li>
-                      <% }) %>
-                </div>
-                <!-- <% todos.forEach(el => { %>
-                    <% if (el.status === 'todo') { %>
-                        <li class="li-todo" data-id='<%= el._id %>'>
                             <span class="todo"><%= el.title %></span>
                             <div class="icon-container">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                                <i class="fa-solid fa-delete-left"></i>
+                                <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
-                            
                         </li>
-                    <% } else if (el.status === 'doing') { %>
-                        <li class="li-doing" data-id='<%= el._id %>'>
-                            <span class="doing"><%= el.title %></span>
-                        </li>
-                    <% } else if (el.status === 'done') { %>
-                        <li class="li-done" data-id='<%= el._id %>'>
-                            <span class="done"><%= el.title %></span>
-                        </li>
-                    <% } %>
-                <% }) %>
-                
-                <% /* %>
-                 <% todos.forEach( el => { %>
-                    <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.status === todo ? 'todo' : 'not'%>'><%= el.todo %></span>
-                        <%el.addEventListener('click', markTodo)%>
-                    </li>
-            <% }) %> 
-                <% */ %> -->
+                    <% }
+                }); %>
             </div>
-            <form class="toDoForm" action="/todo/createTodo" method='POST'>
+            <form class="toDoForm" action="/todo/createTodo" method="POST">
                 <input type="text" placeholder="Enter Todo Title" name="todoTitle">
-                <input type="text" placeholder="Enter Todo Content" name='todoItem'>
+                <input type="text" placeholder="Enter Todo Content" name="todoItem">
                 <input type="submit" value="Add Item" class="submit">
             </form>
         </div>
-
+        
         <div class="kanplan-column-doing column">
             <h2 class="kanplan-column-title">Doing</h2>
             <div class="kanplan-column-tasks">
-            <!--Display tasks here-->
+                <% todos.forEach(el => {
+                    if(el.status === 'doing') { %>
+                        <li class="todoItem li-todo" data-id="<%= el._id %>">
+                            <span class="doing"><%= el.title %></span>
+                            <div class="icon-container">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-delete-left" id="del"></i>
+                            </div>
+                        </li>
+                    <% }
+                }); %>
             </div>
         </div>
-
+        
         <div class="kanplan-column-done column">
             <h2 class="kanplan-column-title">Done</h2>
             <div class="kanplan-column-tasks">
-            <!--Display tasks here-->
+                <% todos.forEach(el => {
+                    if(el.status === 'done') { %>
+                        <li class="todoItem li-todo" data-id="<%= el._id %>">
+                            <span class="done"><%= el.title %></span>
+                            <div class="icon-container">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-delete-left" id="del"></i>
+                            </div>
+                        </li>
+                    <% }
+                }); %>
             </div>
-        </div>
+        </div>        
     </div>
     <script src="js/main.js"></script>
 </body>

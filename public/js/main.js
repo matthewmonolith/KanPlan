@@ -47,10 +47,10 @@ async function markDoing() {
       const data = await response.json();
   
       console.log(data);
-  
-      if (data.status === 'doing') {
-        doingcolumn.appendChild(this.parentNode);
-      }
+      location.reload()
+      // if (data.status === 'doing') {
+      //   doingcolumn.appendChild(this.parentNode);
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -75,11 +75,11 @@ async function markDone(){ //function to add task to the done column
         })
         const data = await response.json()
 
-        if(data.status === 'done'){
-            doneColumn.appendChild(this.parentNode)
-        }
+        // if(data.status === 'done'){
+        //     doneColumn.appendChild(this.parentNode)
+        // }
         console.log(data)
-
+        location.reload()
     }catch(err){
         console.log(err)
     }
