@@ -25,35 +25,6 @@
                         </li>
                       <% }) %>
                 </div>
-                <!-- <% todos.forEach(el => { %>
-                    <% if (el.status === 'todo') { %>
-                        <li class="li-todo" data-id='<%= el._id %>'>
-                            <span class="todo"><%= el.title %></span>
-                            <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                <i class="fa-solid fa-delete-left"></i>
-                            </div>
-                            
-                        </li>
-                    <% } else if (el.status === 'doing') { %>
-                        <li class="li-doing" data-id='<%= el._id %>'>
-                            <span class="doing"><%= el.title %></span>
-                        </li>
-                    <% } else if (el.status === 'done') { %>
-                        <li class="li-done" data-id='<%= el._id %>'>
-                            <span class="done"><%= el.title %></span>
-                        </li>
-                    <% } %>
-                <% }) %>
-                
-                <% /* %>
-                 <% todos.forEach( el => { %>
-                    <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.status === todo ? 'todo' : 'not'%>'><%= el.todo %></span>
-                        <%el.addEventListener('click', markTodo)%>
-                    </li>
-            <% }) %> 
-                <% */ %> -->
             </div>
             <form class="toDoForm" action="/todo/createTodo" method='POST'>
                 <input type="text" placeholder="Enter Todo Title" name="todoTitle">
