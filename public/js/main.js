@@ -8,10 +8,9 @@ Array.from(todoItems).forEach(el => el.addEventListener('click', markTodo))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doneItems).forEach(el => el.addEventListener('click', markDone))
 
-
-
 async function deleteTodo(){
     const todoId = this.parentNode.dataset.id
+    console.log(todoId)
     try{
         const response = await fetch('todos/deleteTodo', {
             method: 'delete',
