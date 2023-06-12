@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema({
   password: String
 })
 
-
 // Password hash middleware.
  
  UserSchema.pre('save', function save(next) {
@@ -23,9 +22,7 @@ const UserSchema = new mongoose.Schema({
   })
 })
 
-
 // Helper method for validating user's password.
-
 UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)
