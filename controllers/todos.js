@@ -49,6 +49,9 @@ module.exports = {
         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
             status: 'done'
         })
+        res.json({
+          status:'done'
+        })
     } catch (error) {
       console.log(error);
     }
