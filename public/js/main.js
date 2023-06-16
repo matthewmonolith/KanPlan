@@ -3,10 +3,16 @@ const todoItems = document.querySelectorAll('span.todo')
 const doingItems = document.querySelectorAll('span.doing')
 const doneItems = document.querySelectorAll('span.done')
 
+const editButtons = document.querySelectorAll('#edit-button')
+const modal = document.getElementById('modal')
+const editTitleInput = document.getElementById('edit-title')
+const editContentTextarea = document.getElementById('edit-content');
+const saveButton = document.getElementById('save-button');
+
 Array.from(deleteBtn).forEach(el=> el.addEventListener('click', deleteTodo))
 Array.from(todoItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDone))
-
+Array.from(editButtons).forEach(el => el.addEventListener('click', openModal))
 
 
 async function deleteTodo(){
@@ -48,9 +54,6 @@ async function markDoing() {
   
       console.log(data);
       location.reload()
-      // if (data.status === 'doing') {
-      //   doingcolumn.appendChild(this.parentNode);
-      // }
     } catch (err) {
       console.log(err);
     }
@@ -74,10 +77,6 @@ async function markDone(){ //function to add task to the done column
             })
         })
         const data = await response.json()
-
-        // if(data.status === 'done'){
-        //     doneColumn.appendChild(this.parentNode)
-        // }
         console.log(data)
         location.reload()
     }catch(err){
@@ -85,4 +84,55 @@ async function markDone(){ //function to add task to the done column
     }
 }
 
+// opens modal box with the content of the todo inside of it
+function openModal() {
+    console.log('openModal has been called');
+  
+    // grab the necessary parts of the todo
+    const todoItem = this.parentNode.parentNode;
+    const todoId = todoItem.dataset.id;
+    const title = todoItem.querySelector('span').textContent;
+    const content = todoItem.querySelector('p').textContent;
+  
+    // put title and content of todo into the modal edit areas
+    editTitleInput.value = title;
+    editContentTextarea.value = content;
+  
+    // set the todo ID as a data attribute on the save button
+    saveButton.dataset.id = todoId;
+  
+    modal.style.display = 'block';
+  }
+  
+  saveButton.addEventListener('click', saveChanges);
+  
+  // save the changes function
+  async function saveChanges() {
+    const updatedTitle = editTitleInput.value;
+    const updatedContent = editContentTextarea.value;
+    const todoId = this.dataset.id; // Access the todo ID from the save button's data attribute
+    
+    try {
+      const response = await fetch('todo/updateContent', {
+        method: 'PUT',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({
+          todoIdFromJSFile: todoId,
+          updatedTitleFromModal: updatedTitle,
+          updatedContentFromModal: updatedContent,
+        }),
+      });
+  
+      const data = await response.json();
+      // Handle the response data or update the UI accordingly
+      console.log(data);
+      // Close the modal
+      modal.style.display = 'none';
+      location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  
 
