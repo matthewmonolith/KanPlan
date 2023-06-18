@@ -1,0 +1,51 @@
+nav ul{
+    display: flex;
+    gap: 2rem;
+}
+
+nav li {
+    list-style: none;
+}
+
+.nav__logo{
+    font-weight: 700;
+}
+.home__container{
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.home__title{
+    margin: 0;
+}
+
+.home__title span{
+    background: black;
+    color: white;
+    font-style: italic;
+}
+
+.home__container p, 
+.text__viewboard {
+    line-height: 1.8;
+    padding-right: 2rem;
+}
+
+.container__text{
+    max-width: 50%;
+}
+
+.link__viewboard{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+}
+
+.link__viewboard:hover{
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
