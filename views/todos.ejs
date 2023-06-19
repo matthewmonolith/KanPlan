@@ -12,7 +12,28 @@
     <title>KanPlan</title>
 </head>
 <body>
-    <h1>KanPlan Board</h1>
+
+    <header class="header">
+        <nav role="navigation" class="navbar">
+            <h1>KanPlan Board</h1> 
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#">Share Board</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Settings</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+        
+    
+    
     <div class="kanplan-board">
         <div class="kanplan-column-todo column">
             <h2 class="kanplan-column-title">ToDo</h2>
@@ -21,11 +42,21 @@
                     if(el.status === 'todo') { %>
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="todo"><%= el.title %></span>
+                            <p class="todo-content"><%= el.content %></p>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit-button"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
+
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <h3>Edit Content</h3>
+                                <input type="text" id="edit-title" />
+                                <textarea id="edit-content"></textarea>
+                                <button id="save-button">Save Changes</button>
+                            </div>
+                        </div>
                     <% }
                 }); %>
             </div>
@@ -44,7 +75,7 @@
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="doing"><%= el.title %></span>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
@@ -61,7 +92,7 @@
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="done"><%= el.title %></span>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
