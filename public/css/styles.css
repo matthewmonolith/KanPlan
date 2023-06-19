@@ -94,7 +94,7 @@ body {
     margin: 100px auto;
   }
 
-  p {
+  .todoItem p {
     display: none;
   }
 
