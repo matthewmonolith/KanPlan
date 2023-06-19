@@ -86,3 +86,20 @@ async function markDone(){ //function to add task to the done column
 }
 
 
+//Nav Menu
+const hamburger = document.querySelector('.hamburger')
+const navMenu = document.querySelector('.nav-menu')
+const navLink = document.querySelectorAll('.nav-menu a')
+
+hamburger.addEventListener('click', mobileMenu)
+navLink.forEach(link => link.addEventListener('click', closeMenu))
+
+function mobileMenu() {
+    hamburger.classList.toggle('active')
+    navMenu.classList.toggle('active')
+}
+
+function closeMenu() {
+    hamburger.classList.remove('active')
+    navMenu.classList.remove('active')
+}
