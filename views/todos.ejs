@@ -42,11 +42,21 @@
                     if(el.status === 'todo') { %>
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="todo"><%= el.title %></span>
+                            <p class="todo-content"><%= el.content %></p>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit-button"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
+
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <h3>Edit Content</h3>
+                                <input type="text" id="edit-title" />
+                                <textarea id="edit-content"></textarea>
+                                <button id="save-button">Save Changes</button>
+                            </div>
+                        </div>
                     <% }
                 }); %>
             </div>
@@ -65,7 +75,7 @@
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="doing"><%= el.title %></span>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
@@ -82,7 +92,7 @@
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="done"><%= el.title %></span>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>

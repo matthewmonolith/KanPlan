@@ -66,4 +66,16 @@ module.exports = {
       console.log(error);
     }
   },
+  updateContent: async (req,res) => {
+    console.log(req.body.todoIdFromJSFile)
+    try {
+      await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile}, {
+        title: req.body.updatedTitleFromModal,
+        content: req.body.updatedContentFromModal
+      })
+      res.json('updated content')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
