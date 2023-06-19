@@ -9,6 +9,7 @@ const editTitleInput = document.getElementById('edit-title')
 const editContentTextarea = document.getElementById('edit-content');
 const saveButton = document.getElementById('save-button');
 
+
 Array.from(deleteBtn).forEach(el=> el.addEventListener('click', deleteTodo))
 Array.from(todoItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDone))
