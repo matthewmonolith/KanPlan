@@ -103,12 +103,14 @@ function openModal() {
     saveButton.dataset.id = todoId;
   
     modal.style.display = 'block';
-  }
-  
-  saveButton.addEventListener('click', saveChanges);
-  
+
+    saveButton.addEventListener('click', saveChanges);
+}
+
   // save the changes function
   async function saveChanges() {
+    event.preventDefault()
+
     const updatedTitle = editTitleInput.value;
     const updatedContent = editContentTextarea.value;
     const todoId = this.dataset.id; // Access the todo ID from the save button's data attribute
@@ -142,10 +144,10 @@ const hamburger = document.querySelector('.hamburger')
 const navMenu = document.querySelector('.nav-menu')
 const navLink = document.querySelectorAll('.nav-menu a')
 
-hamburger.addEventListener('click', mobileMenu)
+hamburger.addEventListener('click', openMenu)
 navLink.forEach(link => link.addEventListener('click', closeMenu))
 
-function mobileMenu() {
+function openMenu() {
     hamburger.classList.toggle('active')
     navMenu.classList.toggle('active')
 }

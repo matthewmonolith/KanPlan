@@ -116,7 +116,6 @@ a {
     padding: 1rem 1.5rem;
 }
 
-
 .bar {
     display: block;
     width: 25px;
@@ -125,16 +124,6 @@ a {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: #101010;
-}
-
-.nav-link {
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: #475569;
-}
-
-.nav-link:hover {
-    color: #56A3A6;
 }
 
 .nav-menu {
@@ -160,8 +149,13 @@ a {
 }
 
 .nav-item {
+    color: #475569;
     margin: 2.5rem 0;
     list-style: none;
+}
+
+.nav-item:hover {
+    color: #56A3A6;
 }
 
 .hamburger {
