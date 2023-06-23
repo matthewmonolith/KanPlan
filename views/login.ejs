@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
-<body>
+<body class="login">
+    <main>
+    <h1>Welcome back to Kanplan <br> 
+        Sign in to continue.</h1>
+    <p>Don't have an account? <a href="/signup">Create an account</a>.</p>
+    <p>It takes less than one minute.</p>
 
-    <form action="/login" method="POST">
+    <form class="login__form" action="/login" method="POST">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
-        <input type="submit">
+        <input class="login__button" type="submit">
     </form>
+</main>
 </body>
 </html>
