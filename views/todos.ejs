@@ -57,10 +57,15 @@
 
                         <div id="modal" class="modal">
                             <div class="modal-content">
-                                <h3>Edit Content</h3>
-                                <input type="text" id="edit-title" />
-                                <textarea id="edit-content"></textarea>
-                                <button id="save-button">Save Changes</button>
+                                <div class="modal-header">
+                                    <h3>Click To Edit Content</h3>
+                                    <button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-inputs">
+                                    <input type="text" id="edit-title" />
+                                    <textarea id="edit-content"></textarea>
+                                    <button id="save-button">Save Changes</button>
+                                </div>
                             </div>
                         </div>
                     <% }
@@ -80,11 +85,22 @@
                     if(el.status === 'doing') { %>
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="doing"><%= el.title %></span>
+                            <p class="todo-content"><%= el.content %></p>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit-button"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
+
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <h3>Edit Content</h3>
+                                <button class="close-button">&times;</button>
+                                <input type="text" id="edit-title" />
+                                <textarea id="edit-content"></textarea>
+                                <button id="save-button">Save Changes</button>
+                            </div>
+                        </div>
                     <% }
                 }); %>
             </div>
@@ -97,11 +113,22 @@
                     if(el.status === 'done') { %>
                         <li class="todoItem li-todo" data-id="<%= el._id %>">
                             <span class="done"><%= el.title %></span>
+                            <p class="todo-content"><%= el.content %></p>
                             <div class="icon-container">
-                                <i class="fa-solid fa-pen-to-square" id="edit"></i>
+                                <i class="fa-solid fa-pen-to-square" id="edit-button"></i>
                                 <i class="fa-solid fa-delete-left" id="del"></i>
                             </div>
                         </li>
+
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <h3>Edit Content</h3>
+                                <button class="close-button">&times;</button>
+                                <input type="text" id="edit-title" />
+                                <textarea id="edit-content"></textarea>
+                                <button id="save-button">Save Changes</button>
+                            </div>
+                        </div>
                     <% }
                 }); %>
             </div>

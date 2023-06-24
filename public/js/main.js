@@ -8,12 +8,15 @@ const modal = document.getElementById('modal')
 const editTitleInput = document.getElementById('edit-title')
 const editContentTextarea = document.getElementById('edit-content');
 const saveButton = document.getElementById('save-button');
-
+const closeButton = document.querySelectorAll('.close-button')
 
 Array.from(deleteBtn).forEach(el=> el.addEventListener('click', deleteTodo))
 Array.from(todoItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDone))
 Array.from(editButtons).forEach(el => el.addEventListener('click', openModal))
+Array.from(closeButton).forEach(el => el.addEventListener('click', closeModal))
+
+
 
 
 async function deleteTodo(){
@@ -137,7 +140,9 @@ function openModal() {
     }
   }
   
-  
+  function closeModal(){
+    modal.style.display = 'none';
+  }
 
 //Nav Menu
 const hamburger = document.querySelector('.hamburger')
