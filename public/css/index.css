@@ -14,6 +14,8 @@ nav li {
     padding: 4rem;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 .home__title{
@@ -33,7 +35,9 @@ nav li {
 }
 
 .container__text{
-    max-width: 50%;
+    /* max-width: 50%; */
+    text-align: center;
+    min-width: 25em;
 }
 
 .link__viewboard{
@@ -49,3 +53,25 @@ nav li {
     cursor: pointer;
 }
 
+.home__img {
+    height: 100%;
+    max-width: 100%;
+}
+
+@media screen and (min-width: 768px){
+    .home__container{
+        padding: 4rem;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .container__text{
+        text-align: left;
+        max-width: 50%;
+    }
+
+    .home__img {
+        max-width: 50%;
+    }
+}
