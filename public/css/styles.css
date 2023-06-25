@@ -290,3 +290,17 @@ a {
 .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+@media screen and (min-width: 768px){
+  .column {
+    max-width: 300px;
+    flex: 1;
+  }
+
+  .kanplan-board {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+  }
+}
