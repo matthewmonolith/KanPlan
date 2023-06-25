@@ -35,7 +35,9 @@ nav li {
 }
 
 .container__text{
-    max-width: 50%;
+    /* max-width: 50%; */
+    text-align: center;
+    min-width: 25em;
 }
 
 .link__viewboard{
