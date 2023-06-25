@@ -17,7 +17,7 @@ module.exports = {
             status: 'todo'
         })
         console.log('Todo Added')
-        res.redirect('/')
+        res.redirect('/todo')
     } catch (error) {
         console.log(error);
     }
