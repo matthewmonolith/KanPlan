@@ -18,7 +18,9 @@ body {
     background: #f0f0f0;
     margin: 10px;
     border-radius: 10px;
-    max-width: 300px;
+    width: 90%;
+    height: 22em;
+    /* max-width: 300px; */
 }
 
 .kanplan-column-title {
