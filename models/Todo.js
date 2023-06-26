@@ -28,4 +28,4 @@ userId: {
 //     required: true,
 // }
 })
-module.exports = mongoose.model('Todo',TodoSchema,'todos');
+module.exports = mongoose.model('Todo',TodoSchema);
