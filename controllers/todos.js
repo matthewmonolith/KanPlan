@@ -3,7 +3,7 @@ const Todo = require('../models/Todo.js');
 module.exports = {
   getTodos: async (req, res) => {
     try {
-      const allTodos = await Todo.find();
+      const allTodos = await Todo.find({userId:req.user.id});
       res.render('todos.ejs', {todos: allTodos})
     } catch (error) {
       console.log(error);
@@ -14,7 +14,8 @@ module.exports = {
         await Todo.create({
             title: req.body.todoTitle,
             content: req.body.todoItem, 
-            status: 'todo'
+            status: 'todo',
+            userId: req.user.id
         })
         console.log('Todo Added')
         res.redirect('/todo')

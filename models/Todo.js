@@ -17,6 +17,10 @@ dateCreated: {
     type: Date,
     default: Date.now
 },
+userId: {
+    type: String,
+    required: true
+}
 //require userCreated after user login is implemented
 // userCreated: {
 //     type: mongoose.Schema.Types.ObjectId,
@@ -24,4 +28,4 @@ dateCreated: {
 //     required: true,
 // }
 })
-module.exports = mongoose.model('Todo',TodoSchema,'todos');
+module.exports = mongoose.model('Todo',TodoSchema);
