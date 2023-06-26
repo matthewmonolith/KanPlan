@@ -14,7 +14,8 @@ module.exports = {
         await Todo.create({
             title: req.body.todoTitle,
             content: req.body.todoItem, 
-            status: 'todo'
+            status: 'todo',
+            userId: req.user.id
         })
         console.log('Todo Added')
         res.redirect('/todo')
