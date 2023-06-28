@@ -181,15 +181,22 @@ function switchToBackgroundMenu() {
 	
 	const photoGrid = document.createElement('div');
 	photoGrid.classList.add('photo-grid');
+
+	const submitButton = document.createElement('button')
+	submitButton.classList.add('submit-button')
+	submitButton.textContext = 'Search'
   
 	// Append the new menu elements to the menu container
 	const menuContainer = document.querySelector('.nav-menu');
 	menuContainer.appendChild(backButton);
 	menuContainer.appendChild(searchInput);
 	menuContainer.appendChild(photoGrid);
+	menuContainer.appendChild(submitButton)
   
 	// Add event listener to the back button
 	backButton.addEventListener('click', switchToMainMenu);
+
+	submitButton.addEventListener('click', submitSearch)
 }
 
 // Event listener for "Change Background" menu item
@@ -201,12 +208,18 @@ function switchToMainMenu() {
 	const backButton = document.querySelector('.back-button');
 	const searchInput = document.querySelector('input[type="text"]');
 	const photoGrid = document.querySelector('.photo-grid');
+	const submitButton = document.querySelector('.submit-button')
   
 	backButton.remove();
 	searchInput.remove();
 	photoGrid.remove();
+	submitButton.remove()
   
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'block');
-  }
+}
+
+function submitSearch() {
+
+}
