@@ -167,7 +167,7 @@ function switchToBackgroundMenu() {
 	// Hide the current menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'none');
-	openMenu()
+	openMenu();
   
 	// Create the new menu elements
 	const backButton = document.createElement('div');
@@ -175,28 +175,29 @@ function switchToBackgroundMenu() {
 	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
 
 	const searchInput = document.createElement('input');
-	searchInput.classList.add('search-input-background')
+	searchInput.classList.add('search-input-background');
 	searchInput.setAttribute('type', 'text');
 	searchInput.setAttribute('placeholder', 'Search for photos');
+	searchInput.id = 'searchInput';
 	
+	const submitButton = document.createElement('button')
+	submitButton.classList.add('submit-button');
+	submitButton.innerText = 'Search';
+
 	const photoGrid = document.createElement('div');
 	photoGrid.classList.add('photo-grid');
-
-	const submitButton = document.createElement('button')
-	submitButton.classList.add('submit-button')
-	submitButton.textContext = 'Search'
   
 	// Append the new menu elements to the menu container
 	const menuContainer = document.querySelector('.nav-menu');
 	menuContainer.appendChild(backButton);
 	menuContainer.appendChild(searchInput);
+	menuContainer.appendChild(submitButton);
 	menuContainer.appendChild(photoGrid);
-	menuContainer.appendChild(submitButton)
   
 	// Add event listener to the back button
 	backButton.addEventListener('click', switchToMainMenu);
 
-	submitButton.addEventListener('click', submitSearch)
+	submitButton.addEventListener('click', submitSearch);
 }
 
 // Event listener for "Change Background" menu item
@@ -208,12 +209,12 @@ function switchToMainMenu() {
 	const backButton = document.querySelector('.back-button');
 	const searchInput = document.querySelector('input[type="text"]');
 	const photoGrid = document.querySelector('.photo-grid');
-	const submitButton = document.querySelector('.submit-button')
+	const submitButton = document.querySelector('.submit-button');
   
 	backButton.remove();
 	searchInput.remove();
 	photoGrid.remove();
-	submitButton.remove()
+	submitButton.remove();
   
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
@@ -221,5 +222,33 @@ function switchToMainMenu() {
 }
 
 function submitSearch() {
+	const searchInput = document.getElementById('searchInput').value.trim()
 
+	fetch(`/todo/searchPhotos?searchInput=${encodeURIComponent(searchInput)}`)
+		.then((response) => response.json())
+		.then((data) => {
+			displayPhotos(data)
+			console.log(data)
+		})
+		.catch((error) => {
+			console.error('Error searching for photos', error)
+		})
+}
+
+function displayPhotos(data) {
+	const photoGrid = document.querySelector('.photo-grid');
+	photoGrid.innerHTML = '';
+
+	if (data.photos && Array.isArray(data.photos)) {
+		data.photos.forEach((photo) => {
+			const img = document.createElement('img')
+			img.src = photo.urls.small
+			img.alg = photo.alt_description
+
+			photoGrid.appendChild(img)
+		})		
+	}
+	else {
+		console.log('Invalid data format:', data)
+	}
 }

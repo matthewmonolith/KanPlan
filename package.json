@@ -26,6 +26,7 @@
     "npm": "^9.7.1",
     "passport": "^0.5.3",
     "passport-local": "^1.0.0",
+    "unsplash-js": "^7.0.18",
     "validator": "^13.9.0"
   },
   "devDependencies": {
