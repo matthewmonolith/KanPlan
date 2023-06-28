@@ -242,8 +242,17 @@ function displayPhotos(data) {
 	if (data.photos && Array.isArray(data.photos)) {
 		data.photos.forEach((photo) => {
 			const img = document.createElement('img')
-			img.src = photo.urls.small
+			img.src = photo.urls.regular
 			img.alg = photo.alt_description
+
+			img.addEventListener('click', function () {
+				const bgImage = new Image()
+				bgImage.src = photo.urls.full
+				bgImage.onload = function () {
+					const backgroundContainer = document.querySelector('.background-container')
+					backgroundContainer.style.backgroundImage = `url('${photo.urls.full}')`
+				}
+			})
 
 			const photographerLink = document.createElement('a');
 			photographerLink.href = photo.user.links.html;
@@ -275,5 +284,5 @@ function displayPhotos(data) {
 	} else {
 	  console.log('Invalid data format:', data);
 	}
-  }
+}
   
