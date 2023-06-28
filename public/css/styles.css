@@ -328,7 +328,6 @@ a {
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     max-height: calc(100vh - 300px);
     overflow-y: auto;
@@ -337,6 +336,7 @@ a {
 .photo-grid img {
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px){
@@ -350,5 +350,9 @@ a {
         justify-content: center;
         flex-direction: row;
         align-items: baseline;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
