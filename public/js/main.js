@@ -161,3 +161,52 @@ function closeMenu() {
     hamburger.classList.remove('active')
     navMenu.classList.remove('active')
 }
+
+//Change Background
+function switchToBackgroundMenu() {
+	// Hide the current menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'none');
+	openMenu()
+  
+	// Create the new menu elements
+	const backButton = document.createElement('div');
+	backButton.classList.add('back-button');
+	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+
+	const searchInput = document.createElement('input');
+	searchInput.classList.add('search-input-background')
+	searchInput.setAttribute('type', 'text');
+	searchInput.setAttribute('placeholder', 'Search for photos');
+	
+	const photoGrid = document.createElement('div');
+	photoGrid.classList.add('photo-grid');
+  
+	// Append the new menu elements to the menu container
+	const menuContainer = document.querySelector('.nav-menu');
+	menuContainer.appendChild(backButton);
+	menuContainer.appendChild(searchInput);
+	menuContainer.appendChild(photoGrid);
+  
+	// Add event listener to the back button
+	backButton.addEventListener('click', switchToMainMenu);
+}
+
+// Event listener for "Change Background" menu item
+const changeBackgroundLink = document.querySelector('#change-background');
+changeBackgroundLink.addEventListener('click', switchToBackgroundMenu);
+
+function switchToMainMenu() {
+	// Remove the background menu elements
+	const backButton = document.querySelector('.back-button');
+	const searchInput = document.querySelector('input[type="text"]');
+	const photoGrid = document.querySelector('.photo-grid');
+  
+	backButton.remove();
+	searchInput.remove();
+	photoGrid.remove();
+  
+	// Show the original menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'block');
+  }
