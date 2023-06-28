@@ -245,10 +245,35 @@ function displayPhotos(data) {
 			img.src = photo.urls.small
 			img.alg = photo.alt_description
 
-			photoGrid.appendChild(img)
-		})		
+			const photographerLink = document.createElement('a');
+			photographerLink.href = photo.user.links.html;
+			photographerLink.target = '_blank'
+			photographerLink.textContent = photo.user.name;
+	  
+			const photographerName = document.createElement('div');
+			photographerName.classList.add('photographer-name');
+			photographerName.appendChild(photographerLink);
+	  
+			const photoContainer = document.createElement('div');
+			photoContainer.classList.add('photo-container');
+			photoContainer.appendChild(img);
+			photoContainer.appendChild(photographerName);
+	  
+			photoGrid.appendChild(photoContainer);
+
+			// Add event listener for hover effect
+			photoContainer.addEventListener('mouseenter', () => {
+		  		img.style.filter = 'grayscale(100%)';
+		  		photographerName.style.visibility = 'visible';
+			});
+  
+			photoContainer.addEventListener('mouseleave', () => {
+		  		img.style.filter = '';
+		  		photographerName.style.visibility = 'hidden';
+			});
+	  	});
+	} else {
+	  console.log('Invalid data format:', data);
 	}
-	else {
-		console.log('Invalid data format:', data)
-	}
-}
+  }
+  
