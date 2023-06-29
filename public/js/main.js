@@ -194,10 +194,20 @@ function switchToBackgroundMenu() {
 	searchInput.setAttribute('type', 'text');
 	searchInput.setAttribute('placeholder', 'Search for photos');
 	searchInput.id = 'searchInput';
+
+	const buttonContainer = document.createElement('div')
+	buttonContainer.classList.add('button-container')
 	
 	const submitButton = document.createElement('button')
 	submitButton.classList.add('submit-button');
 	submitButton.innerText = 'Search';
+
+	const resetButton = document.createElement('button')
+	resetButton.classList.add('reset-button')
+	resetButton.innerText = 'Reset'
+
+	buttonContainer.appendChild(submitButton)
+	buttonContainer.appendChild(resetButton)
 
 	const photoGrid = document.createElement('div');
 	photoGrid.classList.add('photo-grid');
@@ -207,13 +217,15 @@ function switchToBackgroundMenu() {
 	menuContainer.appendChild(backButton);
 	menuContainer.appendChild(unsplashContainer)
 	menuContainer.appendChild(searchInput);
-	menuContainer.appendChild(submitButton);
+	menuContainer.appendChild(buttonContainer)
 	menuContainer.appendChild(photoGrid);
   
-	// Add event listener to the back button
+	// Add event listeners to the buttons
 	backButton.addEventListener('click', switchToMainMenu);
 
 	submitButton.addEventListener('click', submitSearch);
+
+	resetButton.addEventListener('click', resetBackground)
 }
 
 // Event listener for "Change Background" menu item
@@ -226,17 +238,22 @@ function switchToMainMenu() {
 	const unsplashContainer = document.querySelector('.unsplash-container')
 	const searchInput = document.querySelector('input[type="text"]');
 	const photoGrid = document.querySelector('.photo-grid');
-	const submitButton = document.querySelector('.submit-button');
+	const buttonContainer = document.querySelector('.button-container')
   
 	backButton.remove();
 	unsplashContainer.remove()
 	searchInput.remove();
 	photoGrid.remove();
-	submitButton.remove();
+	buttonContainer.remove()
   
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'block');
+}
+
+function resetBackground() {
+	const backgroundContainer = document.querySelector('.background-container')
+	backgroundContainer.style.backgroundImage = 'none'
 }
 
 function submitSearch() {
@@ -307,9 +324,12 @@ function displayPhotos(data) {
 	}
 
 	const selectedPhotoURL = localStorage.getItem('selectedPhotoURL')
+	const backgroundContainer = document.querySelector('.background-container')
+
 	if (selectedPhotoURL) {
-		const backgroundContainer = document.querySelector('.background-container')
 		backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
+	} else {
+		backgroundContainer.style.backgroundImage = 'none'
 	}
 }
   
