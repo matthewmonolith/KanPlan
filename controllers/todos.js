@@ -85,7 +85,7 @@ module.exports = {
 
       const response = await req.unsplash.search.getPhotos({
         query: searchInput,
-        per_page: 10,
+        per_page: 50,
       })
 
       const photos = response.response.results

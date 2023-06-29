@@ -248,10 +248,13 @@ function displayPhotos(data) {
 			img.addEventListener('click', function () {
 				const bgImage = new Image()
 				bgImage.src = photo.urls.full
-				bgImage.onload = function () {
+
+				bgImage.addEventListener('load', function () {
 					const backgroundContainer = document.querySelector('.background-container')
 					backgroundContainer.style.backgroundImage = `url('${photo.urls.full}')`
-				}
+
+					localStorage.setItem('selectedPhotoURL', photo.urls.full)
+				})
 			})
 
 			const photographerLink = document.createElement('a');
@@ -284,5 +287,23 @@ function displayPhotos(data) {
 	} else {
 	  console.log('Invalid data format:', data);
 	}
+
+	const selectedPhotoURL = localStorage.getItem('selectedPhotoURL')
+	if (selectedPhotoURL) {
+		const backgroundContainer = document.querySelector('.background-container')
+		backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
+	}
 }
   
+window.addEventListener('DOMContentLoaded', () => {
+	const selectedPhotoURL = localStorage.getItem('selectedPhotoURL')
+	if (selectedPhotoURL) {
+		const bgImage = new Image()
+		bgImage.src = selectedPhotoURL
+		bgImage.addEventListener('load', function () {
+			const backgroundContainer = document.querySelector('.background-container')
+			backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
+		})
+
+	}
+})
