@@ -238,6 +238,7 @@ a {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(1.6px);
     -webkit-backdrop-filter: blur(1.6px);
+    margin-bottom: 1rem;
 }
 
 .navbar {
