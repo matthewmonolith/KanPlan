@@ -174,6 +174,21 @@ function switchToBackgroundMenu() {
 	backButton.classList.add('back-button');
 	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
 
+	const unsplashContainer = document.createElement('div')
+	unsplashContainer.classList.add('unsplash-container')
+
+	const unsplashText = document.createElement('span')
+	unsplashText.textContent = 'Photos by '
+
+	const unsplashLink = document. createElement('a')
+	unsplashLink.classList.add('unsplash-link')
+	unsplashLink.href = 'https://unsplash.com'
+	unsplashLink.target = '_blank'
+	unsplashLink.textContent = 'Unsplash'
+
+	unsplashContainer.appendChild(unsplashText)
+	unsplashContainer.appendChild(unsplashLink)
+
 	const searchInput = document.createElement('input');
 	searchInput.classList.add('search-input-background');
 	searchInput.setAttribute('type', 'text');
@@ -190,6 +205,7 @@ function switchToBackgroundMenu() {
 	// Append the new menu elements to the menu container
 	const menuContainer = document.querySelector('.nav-menu');
 	menuContainer.appendChild(backButton);
+	menuContainer.appendChild(unsplashContainer)
 	menuContainer.appendChild(searchInput);
 	menuContainer.appendChild(submitButton);
 	menuContainer.appendChild(photoGrid);
@@ -207,11 +223,13 @@ changeBackgroundLink.addEventListener('click', switchToBackgroundMenu);
 function switchToMainMenu() {
 	// Remove the background menu elements
 	const backButton = document.querySelector('.back-button');
+	const unsplashContainer = document.querySelector('.unsplash-container')
 	const searchInput = document.querySelector('input[type="text"]');
 	const photoGrid = document.querySelector('.photo-grid');
 	const submitButton = document.querySelector('.submit-button');
   
 	backButton.remove();
+	unsplashContainer.remove()
 	searchInput.remove();
 	photoGrid.remove();
 	submitButton.remove();
@@ -304,6 +322,5 @@ window.addEventListener('DOMContentLoaded', () => {
 			const backgroundContainer = document.querySelector('.background-container')
 			backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
 		})
-
 	}
 })

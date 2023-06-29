@@ -317,6 +317,22 @@ a {
     cursor: pointer;
 }
 
+.unsplash-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.unsplash-text {
+    margin-right: 0.5rem;
+}
+
+.unsplash-link {
+    margin-left: 0.25rem;
+    color: #56A3A6;
+    text-decoration: underline;
+}
+
 .search-input-background {
     width: 90%;
     height: 1rem;
