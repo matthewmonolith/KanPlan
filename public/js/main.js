@@ -10,15 +10,29 @@ const editContentTextarea = document.getElementById('edit-content');
 const saveButton = document.getElementById('save-button');
 const closeButton = document.querySelectorAll('.close-button')
 
+const colSettingsModalButton = document.querySelectorAll('.kanplan-column-title')
+
+const formDisplayButton = document.querySelector('.display-form-button')
+
 Array.from(deleteBtn).forEach(el=> el.addEventListener('click', deleteTodo))
 Array.from(todoItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDone))
 Array.from(editButtons).forEach(el => el.addEventListener('click', openModal))
+Array.from(colSettingsModalButton).forEach(el => el.addEventListener('click', openColSettings))
 Array.from(closeButton).forEach(el => el.addEventListener('click', closeModal))
 
+formDisplayButton.addEventListener('click', displayForm)
+
+//Function to display the form to add a todo
+function displayForm(){
+  console.log('open form called')
+  document.querySelector('.divForForm').style.display = 'block'
+  formDisplayButton.style.display = 'none'
+}
+///////
 
 
-
+//CRUD CODE FUNCTIONS
 async function deleteTodo(){
     const todoId = this.parentNode.parentNode.dataset.id
     console.log(todoId)
@@ -87,7 +101,10 @@ async function markDone(){ //function to add task to the done column
         console.log(err)
     }
 }
+//////
 
+
+//MODAL BOX FUNCTIONS
 // opens modal box with the content of the todo inside of it
 function openModal() {
     console.log('openModal has been called');
@@ -141,8 +158,14 @@ function openModal() {
   }
   
   function closeModal(){
-    modal.style.display = 'none';
+    this.parentNode.parentNode.parentNode.style.display = 'none';
   }
+
+
+function openColSettings(){
+  console.log('open col settings called')
+  document.querySelector('.col-modal').style.display = 'block'
+}
 
 //Nav Menu
 const hamburger = document.querySelector('.hamburger')
