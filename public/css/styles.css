@@ -160,8 +160,7 @@ input:focus {
     overflow: auto;
   }
 
-
-  .modal-content {
+.modal-content {
     background-color: #fff;
     padding: 20px;
     width: 300px;
@@ -171,7 +170,7 @@ input:focus {
     -webkit-animation-duration: 0.4s;
     animation-name: animationtransition;
     animation-duration: 0.4s;
-  }
+}
 
 @-webkit-keyframes animationtransition {
     from {
@@ -182,7 +181,7 @@ input:focus {
       top: 0;
       opacity: 1;
     }
-  }
+}
   
   @keyframes animationtransition {
     from {
@@ -193,7 +192,7 @@ input:focus {
       top: 0;
       opacity: 1;
     }
-  }
+}
 
   .col-modal>.modal-content {
     width: 70%;
@@ -206,9 +205,9 @@ input:focus {
     padding: 5px;
 }
   
-    .modal-header h3 {
-        margin-left: 10px;
-    }
+.modal-header h3 {
+    margin-left: 10px;
+}
 
 
 .close-button {
@@ -227,20 +226,20 @@ input:focus {
 
 .close-button:hover,
 .close-button:focus {
-  color: #111;
-  text-decoration: none;
-  cursor: pointer;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
 
-  .modal-inputs {
+.modal-inputs {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-  }
+}
 
-  #edit-title {
+#edit-title {
     background-color: #FFFFFF;
     border: none;
     border-radius: 4px;
@@ -248,13 +247,13 @@ input:focus {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-  }
+}
 
-  #edit-title:hover {
+#edit-title:hover {
     background-color: #EAEAEA;
-  }
+}
 
-  #edit-content {
+#edit-content {
     background-color: #FFFFFF;
     border: none;
     border-radius: 4px;
@@ -262,13 +261,13 @@ input:focus {
     font-size: 16px;
     font-family: 'Merriweather Sans', sans-serif;
     cursor: pointer;
-  }
+}
 
-  #edit-content:hover{
+#edit-content:hover{
     background-color: #EAEAEA;
-  }
+}
 
-  #save-button {
+#save-button {
     background-color: #FFFFFF;
     color: #333333;
     border: none;
@@ -278,16 +277,16 @@ input:focus {
     font-weight: bold;
     cursor: pointer;
     margin-top: 5px;
-  }
+}
 
   
 #save-button:hover {
     background-color: #EAEAEA;
-  }
+}
 
-  .todoItem p {
+.todoItem p {
     display: none;
-  }
+}
 
 
 textarea {
@@ -345,11 +344,11 @@ a {
     position: fixed;
     visibility: hidden;
     right: -100%;
-    top: 5rem;
+    top: -1rem;
     flex-direction: column;
     background: #fff;
     width: 25%;
-    height: 100vh;
+    min-height: 100vh;
     border-radius: 10px;
     text-align: center;
     transition: 0.3s;
@@ -362,13 +361,16 @@ a {
 }
 
 .nav-item {
-    color: #475569;
     margin: 2rem 0;
     list-style: none;
 }
 
 .nav-item:hover {
     color: #56A3A6;
+}
+
+.nav-item:nth-child(1) {
+    margin-top: 6rem;
 }
 
 .hamburger {
@@ -389,15 +391,15 @@ a {
 }
 
 @media screen and (min-width: 768px){
-  .column {
-    max-width: 300px;
-    flex: 1;
-  }
+    .column {
+        max-width: 300px;
+        flex: 1;
+    }
 
-  .kanplan-board {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: baseline;
-  }
+    .kanplan-board {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: baseline;
+    }
 }
