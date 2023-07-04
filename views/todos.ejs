@@ -42,7 +42,7 @@
         
         <div class="kanplan-board">
             <div class="kanplan-column-todo column">
-                <h2 class="kanplan-column-title">ToDo</h2>
+                    <h2 class="kanplan-column-title">ToDo</h2>
                 <div class="kanplan-column-tasks">
                     <% todos.forEach(el => {
                         if(el.status === 'todo') { %>
@@ -71,13 +71,48 @@
                         <% }
                     }); %>
                 </div>
+                <div class="divForForm">
                 <form class="toDoForm" action="/todo/createTodo" method="POST">
-                    <input type="text" placeholder="Enter Todo Title" name="todoTitle">
-                    <input type="text" placeholder="Enter Todo Content" name="todoItem">
-                    <input type="submit" value="Add Item" class="submit">
-                </form>
+                        <input type="text" placeholder="Enter Todo Title" name="todoTitle">
+                        <input type="text" placeholder="Enter Todo Content" name="todoItem">
+                        <input type="submit" value="Add Item" class="submit">
+                    </form>
+                </div>
+                <div class="display-form">
+                <button class="display-form-button">Click to add a Todo</button>
             </div>
             
+            <div id="col-settings-todo" class="col-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Click to change the column's colour</h3>
+                        <button class="close-button">&times;</button>
+                    </div>
+                    <div class="colour-picker">
+                        <div class="colour-picker-box">
+                            <span>Earthy Red</span>
+                        </div>
+                        <div class="colour-picker-box">
+                            <span>Sage Green</span>
+                        </div>
+                        <div class="colour-picker-box">
+                            <span>Navy Blue</span>
+                        </div>
+                        <div class="colour-picker-box">
+                            <span>Orange</span>
+                        </div>
+                        <div class="colour-picker-box">
+                            <span>Gray</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+
+
             <div class="kanplan-column-doing column">
                 <h2 class="kanplan-column-title">Doing</h2>
                 <div class="kanplan-column-tasks">
@@ -108,7 +143,23 @@
                         <% }
                     }); %>
                 </div>
+                
+            <div id="col-settings-doing" class="col-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Click to change the column's colour</h3>
+                        <button class="close-button">&times;</button>
+                    </div>
+                    <div class="colour-picker">
+                        <div class="colour-picker-box">Earthy Red</div>
+                        <div class="colour-picker-box">Sage Green</div>
+                        <div class="colour-picker-box">Navy Blue</div>
+                        <div class="colour-picker-box">Orange</div>
+                        <div class="colour-picker-box">Gray</div>
+                    </div>
+                </div>
             </div>
+        </div>
             
             <div class="kanplan-column-done column">
                 <h2 class="kanplan-column-title">Done</h2>
@@ -137,10 +188,26 @@
                                     </div>
                                 </div>
                             </div>
-                        <% }
+    
+                    <% }
                     }); %>
                 </div>
-            </div>        
+                <div id="col-settings-done" class="col-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Click to change the column's colour</h3>
+                        <button class="close-button">&times;</button>
+                    </div>
+                    <div class="colour-picker">
+                        <div class="colour-picker-box">Earthy Red</div>
+                        <div class="colour-picker-box">Sage Green</div>
+                        <div class="colour-picker-box">Navy Blue</div>
+                        <div class="colour-picker-box">Orange</div>
+                        <div class="colour-picker-box">Gray</div>
+                    </div>
+                </div>
+            </div>
+        </div>        
         </div>
     </div>
     <script src="js/main.js"></script>

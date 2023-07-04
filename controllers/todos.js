@@ -19,6 +19,7 @@ module.exports = {
         })
         console.log('Todo Added')
         res.redirect('/todo')
+        document.querySelector('.display-form-button').style.display='block'
     } catch (error) {
         console.log(error);
     }
