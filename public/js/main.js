@@ -10,15 +10,29 @@ const editContentTextarea = document.getElementById('edit-content');
 const saveButton = document.getElementById('save-button');
 const closeButton = document.querySelectorAll('.close-button')
 
+const colSettingsModalButton = document.querySelectorAll('.kanplan-column-title')
+
+const formDisplayButton = document.querySelector('.display-form-button')
+
 Array.from(deleteBtn).forEach(el=> el.addEventListener('click', deleteTodo))
 Array.from(todoItems).forEach(el => el.addEventListener('click', markDoing))
 Array.from(doingItems).forEach(el => el.addEventListener('click', markDone))
 Array.from(editButtons).forEach(el => el.addEventListener('click', openModal))
+Array.from(colSettingsModalButton).forEach(el => el.addEventListener('click', openColSettings))
 Array.from(closeButton).forEach(el => el.addEventListener('click', closeModal))
 
+formDisplayButton.addEventListener('click', displayForm)
+
+//Function to display the form to add a todo
+function displayForm(){
+  console.log('open form called')
+  document.querySelector('.divForForm').style.display = 'block'
+  formDisplayButton.style.display = 'none'
+}
+///////
 
 
-
+//CRUD CODE FUNCTIONS
 async function deleteTodo(){
     const todoId = this.parentNode.parentNode.dataset.id
     console.log(todoId)
@@ -87,7 +101,10 @@ async function markDone(){ //function to add task to the done column
         console.log(err)
     }
 }
+//////
 
+
+//MODAL BOX FUNCTIONS
 // opens modal box with the content of the todo inside of it
 function openModal() {
     console.log('openModal has been called');
@@ -141,8 +158,14 @@ function openModal() {
   }
   
   function closeModal(){
-    modal.style.display = 'none';
+    this.parentNode.parentNode.parentNode.style.display = 'none';
   }
+
+
+function openColSettings(){
+  console.log('open col settings called')
+  document.querySelector('.col-modal').style.display = 'block'
+}
 
 //Nav Menu
 const hamburger = document.querySelector('.hamburger')
@@ -161,3 +184,186 @@ function closeMenu() {
     hamburger.classList.remove('active')
     navMenu.classList.remove('active')
 }
+
+//Change Background
+function switchToBackgroundMenu() {
+	// Hide the current menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'none');
+	openMenu();
+  
+	// Create the new menu elements
+	const backButton = document.createElement('div');
+	backButton.classList.add('back-button');
+	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+
+	const unsplashContainer = document.createElement('div')
+	unsplashContainer.classList.add('unsplash-container')
+
+	const unsplashText = document.createElement('span')
+	unsplashText.textContent = 'Photos by '
+
+	const unsplashLink = document. createElement('a')
+	unsplashLink.classList.add('unsplash-link')
+	unsplashLink.href = 'https://unsplash.com'
+	unsplashLink.target = '_blank'
+	unsplashLink.textContent = 'Unsplash'
+
+	unsplashContainer.appendChild(unsplashText)
+	unsplashContainer.appendChild(unsplashLink)
+
+	const searchInput = document.createElement('input');
+	searchInput.classList.add('search-input-background');
+	searchInput.setAttribute('type', 'text');
+	searchInput.setAttribute('placeholder', 'Search for photos');
+	searchInput.id = 'searchInput';
+
+	const buttonContainer = document.createElement('div')
+	buttonContainer.classList.add('button-container')
+	
+	const submitButton = document.createElement('button')
+	submitButton.classList.add('submit-button');
+	submitButton.innerText = 'Search';
+
+	const resetButton = document.createElement('button')
+	resetButton.classList.add('reset-button')
+	resetButton.innerText = 'Reset'
+
+	buttonContainer.appendChild(submitButton)
+	buttonContainer.appendChild(resetButton)
+
+	const photoGrid = document.createElement('div');
+	photoGrid.classList.add('photo-grid');
+  
+	// Append the new menu elements to the menu container
+	const menuContainer = document.querySelector('.nav-menu');
+	menuContainer.appendChild(backButton);
+	menuContainer.appendChild(unsplashContainer)
+	menuContainer.appendChild(searchInput);
+	menuContainer.appendChild(buttonContainer)
+	menuContainer.appendChild(photoGrid);
+  
+	// Add event listeners to the buttons
+	backButton.addEventListener('click', switchToMainMenu);
+
+	submitButton.addEventListener('click', submitSearch);
+
+	resetButton.addEventListener('click', resetBackground)
+}
+
+// Event listener for "Change Background" menu item
+const changeBackgroundLink = document.querySelector('#change-background');
+changeBackgroundLink.addEventListener('click', switchToBackgroundMenu);
+
+function switchToMainMenu() {
+	// Remove the background menu elements
+	const backButton = document.querySelector('.back-button');
+	const unsplashContainer = document.querySelector('.unsplash-container')
+	const searchInput = document.querySelector('input[type="text"]');
+	const photoGrid = document.querySelector('.photo-grid');
+	const buttonContainer = document.querySelector('.button-container')
+  
+	backButton.remove();
+	unsplashContainer.remove()
+	searchInput.remove();
+	photoGrid.remove();
+	buttonContainer.remove()
+  
+	// Show the original menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'block');
+}
+
+function resetBackground() {
+	const backgroundContainer = document.querySelector('.background-container')
+	backgroundContainer.style.backgroundImage = 'none'
+}
+
+function submitSearch() {
+	const searchInput = document.getElementById('searchInput').value.trim()
+
+	fetch(`/todo/searchPhotos?searchInput=${encodeURIComponent(searchInput)}`)
+		.then((response) => response.json())
+		.then((data) => {
+			displayPhotos(data)
+			console.log(data)
+		})
+		.catch((error) => {
+			console.error('Error searching for photos', error)
+		})
+}
+
+function displayPhotos(data) {
+	const photoGrid = document.querySelector('.photo-grid');
+	photoGrid.innerHTML = '';
+
+	if (data.photos && Array.isArray(data.photos)) {
+		data.photos.forEach((photo) => {
+			const img = document.createElement('img')
+			img.src = photo.urls.regular
+			img.alg = photo.alt_description
+
+			img.addEventListener('click', function () {
+				const bgImage = new Image()
+				bgImage.src = photo.urls.full
+
+				bgImage.addEventListener('load', function () {
+					const backgroundContainer = document.querySelector('.background-container')
+					backgroundContainer.style.backgroundImage = `url('${photo.urls.full}')`
+
+					localStorage.setItem('selectedPhotoURL', photo.urls.full)
+				})
+			})
+
+			const photographerLink = document.createElement('a');
+			photographerLink.href = photo.user.links.html;
+			photographerLink.target = '_blank'
+			photographerLink.textContent = photo.user.name;
+	  
+			const photographerName = document.createElement('div');
+			photographerName.classList.add('photographer-name');
+			photographerName.appendChild(photographerLink);
+	  
+			const photoContainer = document.createElement('div');
+			photoContainer.classList.add('photo-container');
+			photoContainer.appendChild(img);
+			photoContainer.appendChild(photographerName);
+	  
+			photoGrid.appendChild(photoContainer);
+
+			// Add event listener for hover effect
+			photoContainer.addEventListener('mouseenter', () => {
+		  		img.style.filter = 'grayscale(100%)';
+		  		photographerName.style.visibility = 'visible';
+			});
+  
+			photoContainer.addEventListener('mouseleave', () => {
+		  		img.style.filter = '';
+		  		photographerName.style.visibility = 'hidden';
+			});
+	  	});
+	} else {
+	  console.log('Invalid data format:', data);
+	}
+
+	const selectedPhotoURL = localStorage.getItem('selectedPhotoURL')
+	const backgroundContainer = document.querySelector('.background-container')
+
+	if (selectedPhotoURL) {
+		backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
+	} else {
+		backgroundContainer.style.backgroundImage = 'none'
+	}
+}
+  
+window.addEventListener('DOMContentLoaded', () => {
+	const selectedPhotoURL = localStorage.getItem('selectedPhotoURL')
+	if (selectedPhotoURL) {
+		const bgImage = new Image()
+		bgImage.src = selectedPhotoURL
+		bgImage.addEventListener('load', function () {
+			const backgroundContainer = document.querySelector('.background-container')
+			backgroundContainer.style.backgroundImage = `url('${selectedPhotoURL}')`
+		})
+	}
+})
