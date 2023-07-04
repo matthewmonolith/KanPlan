@@ -78,5 +78,21 @@ module.exports = {
     } catch (error) {
       console.log(error)
     }
+  },
+  searchPhotos: async (req, res) => {
+    try {
+      const {searchInput } = req.query
+
+      const response = await req.unsplash.search.getPhotos({
+        query: searchInput,
+        per_page: 50,
+      })
+
+      const photos = response.response.results
+      res.json({ photos })
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 }

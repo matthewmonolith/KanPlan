@@ -9,6 +9,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todo')
+const { createApi } = require('unsplash-js')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -39,6 +40,15 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash())
+
+const unsplash = createApi({
+  accessKey: process.env.UNSPLASH_ACCESS_KEY
+})
+
+app.use((req, res, next) => {
+  req.unsplash = unsplash
+  next()
+})
 
 app.use('/', homeRoutes);
 app.use('/todo', todoRoutes)
