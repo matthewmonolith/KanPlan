@@ -196,7 +196,7 @@ input:focus {
     }
 }
   
-@keyframes animatetop {
+@keyframes animatetransition {
     from {
       top: -300px;
       opacity: 0;
