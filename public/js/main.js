@@ -367,3 +367,178 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 })
+
+
+
+
+//ADD TODO COVER
+function switchToCoverBackgroundMenu() {
+	// Create the new menu elements
+	const backButton = document.createElement('div');
+	backButton.classList.add('back-button');
+	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+
+	const unsplashCoverContainer = document.createElement('div')
+	unsplashCoverContainer.classList.add('unsplash-container')
+
+	const unsplashText = document.createElement('span')
+	unsplashText.textContent = 'Photos by '
+
+	const unsplashLink = document. createElement('a')
+	unsplashLink.classList.add('unsplash-link')
+	unsplashLink.href = 'https://unsplash.com'
+	unsplashLink.target = '_blank'
+	unsplashLink.textContent = 'Unsplash'
+
+	unsplashCoverContainer.appendChild(unsplashText)
+	unsplashCoverContainer.appendChild(unsplashLink)
+
+	const searchInput = document.createElement('input');
+	searchInput.classList.add('search-input-background');
+	searchInput.setAttribute('type', 'text');
+	searchInput.setAttribute('placeholder', 'Search for photos');
+	searchInput.id = 'searchCoverInput';
+
+	const buttonContainer = document.createElement('div')
+	buttonContainer.classList.add('button-container')
+	
+	const submitButton = document.createElement('button')
+	submitButton.classList.add('submit-button');
+	submitButton.innerText = 'Search';
+
+	const resetButton = document.createElement('button')
+	resetButton.classList.add('reset-button')
+	resetButton.innerText = 'Reset'
+
+	buttonContainer.appendChild(submitButton)
+	buttonContainer.appendChild(resetButton)
+
+	const photoGridSmall = document.createElement('div');
+	photoGridSmall.classList.add('photo-grid');
+  
+	// Append the new menu elements to the menu container
+	const coverContainer = document.querySelector('.modal-cover-photo');
+	coverContainer.appendChild(backButton);
+	coverContainer.appendChild(unsplashCoverContainer)
+	coverContainer.appendChild(searchInput);
+	coverContainer.appendChild(buttonContainer)
+	coverContainer.appendChild(photoGridSmall);
+  
+	// Add event listeners to the buttons
+	backButton.addEventListener('click', hideUnsplashElementsModal);
+
+	submitButton.addEventListener('click', submitCoverSearch);
+
+	resetButton.addEventListener('click', resetCoverBackground)
+
+	document.getElementById('change-cover').style.display = 'none'
+}
+
+//Event listener for "Change Background" menu item
+const changeCoverBackgroundLink = document.querySelector('#change-cover');
+changeCoverBackgroundLink.addEventListener('click', switchToCoverBackgroundMenu);
+
+function hideUnsplashElementsModal() {
+	// Remove the background menu elements
+	document.querySelector('.back-button').remove()
+	document.querySelector('.unsplash-container').remove()
+	document.querySelector('#searchCoverInput').remove()
+	document.querySelector('.photo-grid').remove()
+	document.querySelector('.button-container').remove()
+	document.getElementById('change-cover').style.display = 'inline'
+
+}
+
+function resetCoverBackground() {
+	const coverContainer = document.querySelector('.cover-container')
+	coverContainer.style.backgroundImage = 'none'
+}
+
+function submitCoverSearch() {
+	const searchCoverInput = document.getElementById('searchCoverInput').value.trim()
+
+	fetch(`/todo/searchPhotos?searchInput=${encodeURIComponent(searchCoverInput)}`)
+		.then((response) => response.json())
+		.then((data) => {
+			displayPhotosSmall(data)
+			console.log(data)
+		})
+		.catch((error) => {
+			console.error('Error searching for photos', error)
+		})
+}
+
+function displayPhotosSmall(data) {
+	const photoGridSmall = document.querySelector('.photo-grid');
+	photoGridSmall.innerHTML = '';
+
+	if (data.photos && Array.isArray(data.photos)) {
+		data.photos.forEach((photo) => {
+			const img = document.createElement('img')
+			img.src = photo.urls.small
+			img.alg = photo.alt_description
+
+			img.addEventListener('click', function () {
+				const coverImg = new Image()
+				coverImg.src = photo.urls.small
+
+				coverImg.addEventListener('load', function () {
+					const coverContainer = document.querySelector('.cover-container')
+					coverContainer.style.backgroundImage = `url('${photo.urls.small}')`
+
+					localStorage.setItem('selectedCoverPhotoURL', photo.urls.small)
+				})
+			})
+
+			const photographerLink = document.createElement('a');
+			photographerLink.href = photo.user.links.html;
+			photographerLink.target = '_blank'
+			photographerLink.textContent = photo.user.name;
+	  
+			const photographerName = document.createElement('div');
+			photographerName.classList.add('photographer-name');
+			photographerName.appendChild(photographerLink);
+	  
+			const photoCoverContainer = document.createElement('div');
+			photoCoverContainer.classList.add('photo-container');
+			photoCoverContainer.appendChild(img);
+			photoCoverContainer.appendChild(photographerName);
+	  
+			photoGridSmall.appendChild(photoCoverContainer);
+
+			// Add event listener for hover effect
+			photoCoverContainer.addEventListener('mouseenter', () => {
+		  		img.style.filter = 'grayscale(100%)';
+		  		photographerName.style.visibility = 'visible';
+			});
+  
+			photoCoverContainer.addEventListener('mouseleave', () => {
+		  		img.style.filter = '';
+		  		photographerName.style.visibility = 'hidden';
+			});
+	  	});
+	} else {
+	  console.log('Invalid data format:', data);
+	}
+
+	const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
+	const coverContainer = document.querySelector('.cover-container')
+
+	if (selectedCoverPhotoURL) {
+		coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
+	} else {
+		coverContainer.style.backgroundImage = 'none'
+	}
+}
+  
+window.addEventListener('DOMContentLoaded', () => {
+	const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
+	if (selectedCoverPhotoURL) {
+		const coverImg = new Image()
+		coverImg.src = selectedCoverPhotoURL
+		coverImg.addEventListener('load', function () {
+			const coverContainer = document.querySelector('.cover-container')
+			coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
+		})
+	}
+})
