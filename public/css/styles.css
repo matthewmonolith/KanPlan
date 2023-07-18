@@ -195,7 +195,7 @@ input:focus {
     }
 }
   
-  @keyframes animationtransition {
+@keyframes animationtransition {
     from {
       top: -300px;
       opacity: 0;
@@ -208,7 +208,7 @@ input:focus {
 
   .col-modal>.modal-content {
     width: 70%;
-  }
+}
 
 .modal-header {
     display: flex;
@@ -444,6 +444,8 @@ a {
     margin: 2rem;
     font-family: 'Merriweather Sans', sans-serif;
     padding: .5rem;
+    border: 1px solid #101010;
+    background: #FFF;
 }
 
 .button-container {

@@ -277,6 +277,7 @@ function switchToMainMenu() {
 function resetBackground() {
 	const backgroundContainer = document.querySelector('.background-container')
 	backgroundContainer.style.backgroundImage = 'none'
+	localStorage.removeItem('selectedPhotoURL')
 }
 
 function submitSearch() {
