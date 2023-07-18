@@ -172,7 +172,6 @@ input:focus {
     overflow: auto;
   }
 
-
 .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -196,7 +195,7 @@ input:focus {
     }
 }
   
-@keyframes animatetransition {
+@keyframes animationtransition {
     from {
       top: -300px;
       opacity: 0;
@@ -209,7 +208,7 @@ input:focus {
 
   .col-modal>.modal-content {
     width: 70%;
-  }
+}
 
 .modal-header {
     display: flex;
@@ -409,6 +408,14 @@ a {
 }
 
 /* Change background */
+.cover-container {
+    height: 70px;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
 .back-button {
     align-self: flex-start;
     font-size: 1.75rem;

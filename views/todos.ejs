@@ -47,6 +47,7 @@
                     <% todos.forEach(el => {
                         if(el.status === 'todo') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
+                                <div class="cover-container"></div>
                                 <span class="todo"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">
@@ -65,6 +66,9 @@
                                         <input type="text" id="edit-title" />
                                         <textarea id="edit-content"></textarea>
                                         <button id="save-button">Save Changes</button>
+                                    </div>
+                                    <div class="modal-cover-photo">
+                                        <a href="#" id="change-cover">Add a cover photo</a>
                                     </div>
                                 </div>
                             </div>
@@ -119,6 +123,7 @@
                     <% todos.forEach(el => {
                         if(el.status === 'doing') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
+                                <div class="cover-container"></div>
                                 <span class="doing"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">
@@ -137,6 +142,9 @@
                                         <input type="text" id="edit-title" />
                                         <textarea id="edit-content"></textarea>
                                         <button id="save-button">Save Changes</button>
+                                    </div>
+                                    <div class="modal-cover-photo">
+                                        <a href="#" id="change-cover">Add a cover photo</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,6 +175,7 @@
                     <% todos.forEach(el => {
                         if(el.status === 'done') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
+                                <div class="cover-container"></div>
                                 <span class="done"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">
@@ -185,6 +194,9 @@
                                         <input type="text" id="edit-title" />
                                         <textarea id="edit-content"></textarea>
                                         <button id="save-button">Save Changes</button>
+                                    </div>
+                                    <div class="modal-cover-photo">
+                                        <a href="#" id="change-cover">Add a cover photo</a>
                                     </div>
                                 </div>
                             </div>
