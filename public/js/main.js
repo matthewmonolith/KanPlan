@@ -453,6 +453,7 @@ function hideUnsplashElementsModal() {
 function resetCoverBackground() {
 	const coverContainer = document.querySelector('.cover-container')
 	coverContainer.style.backgroundImage = 'none'
+	localStorage.removeItem('selectedCoverPhotoURL')
 }
 
 function submitCoverSearch() {
