@@ -407,15 +407,11 @@ function backToMainMenu() {
 	// Remove the background menu elements
 	const backButton = document.querySelector('.back-button');
 	const settingsOptions = document.querySelector('.settings-options')
-	// const searchInput = document.querySelector('input[type="text"]');
-	// const photoGrid = document.querySelector('.photo-grid');
-	// const buttonContainer = document.querySelector('.button-container')
+
   
 	backButton.remove();
 	settingsOptions.remove()
-	// searchInput.remove();
-	// photoGrid.remove();
-	// buttonContainer.remove()
+
   
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
