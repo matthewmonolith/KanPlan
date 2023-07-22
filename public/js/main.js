@@ -394,7 +394,7 @@ function openSettingsMenu() {
 	settingsOptions.appendChild(settingsText)
 
 
-	// Append the new menu elements to the menu container
+	// Append the new menu elements to the settings options container
 	const settingsContainer = document.querySelector('.nav-menu');
 	settingsContainer.appendChild(backButton);
 	settingsContainer.appendChild(settingsOptions)
@@ -404,7 +404,7 @@ function openSettingsMenu() {
 }
 
 function backToMainMenu() {
-	// Remove the background menu elements
+	// Remove the settings menu elements
 	const backButton = document.querySelector('.back-button');
 	const settingsOptions = document.querySelector('.settings-options')
 
