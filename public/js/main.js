@@ -370,6 +370,58 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 
+//SETTINGS MENU
+const settingsLink = document.querySelector('#settings-link')
+settingsLink.addEventListener('click', openSettingsMenu)
+
+function openSettingsMenu() {
+	// Hide the current menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'none');
+	openMenu();
+
+	// Create the new menu elements
+	const backButton = document.createElement('div');
+	backButton.classList.add('back-button');
+	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+
+	const settingsOptions = document.createElement('div')
+	settingsOptions.classList.add('settings-options')
+
+	const settingsText = document.createElement('span')
+	settingsText.textContent = 'Settings'
+
+	settingsOptions.appendChild(settingsText)
+
+
+	// Append the new menu elements to the menu container
+	const settingsContainer = document.querySelector('.nav-menu');
+	settingsContainer.appendChild(backButton);
+	settingsContainer.appendChild(settingsOptions)
+
+	// Add event listeners to the buttons
+	backButton.addEventListener('click', backToMainMenu);
+}
+
+function backToMainMenu() {
+	// Remove the background menu elements
+	const backButton = document.querySelector('.back-button');
+	const settingsOptions = document.querySelector('.settings-options')
+	// const searchInput = document.querySelector('input[type="text"]');
+	// const photoGrid = document.querySelector('.photo-grid');
+	// const buttonContainer = document.querySelector('.button-container')
+  
+	backButton.remove();
+	settingsOptions.remove()
+	// searchInput.remove();
+	// photoGrid.remove();
+	// buttonContainer.remove()
+  
+	// Show the original menu items
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'block');
+}
+
 
 
 //ADD TODO COVER
