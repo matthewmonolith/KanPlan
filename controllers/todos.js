@@ -1,14 +1,14 @@
 const Todo = require('../models/Todo.js');
 
 module.exports = {
-  getTodos: async (req, res) => {
-    try {
-      const allTodos = await Todo.find({userId:req.user.id});
-      res.render('todos.ejs', {todos: allTodos})
-    } catch (error) {
-      console.log(error);
-    }
-  },
+  // getTodos: async (req, res) => {
+  //   try {
+  //     const allTodos = await Todo.find({userId:req.user.id});
+  //     res.render('todos.ejs', {todos: allTodos})
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
   createTodo: async (req, res) => {
     try {
         await Todo.create({
