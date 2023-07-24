@@ -9,6 +9,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todo')
+const boardRoutes = require('./routes/board')
 const { createApi } = require('unsplash-js')
 
 require('dotenv').config({path: './config/.env'})
