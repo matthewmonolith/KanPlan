@@ -1,5 +1,5 @@
 const Board = require('../models/Board');
-// const Comment = require('../models/Comment');
+const Todo = require('../models/Todo');
 
 module.exports = {
   getAllBoards: async (req, res) => {
