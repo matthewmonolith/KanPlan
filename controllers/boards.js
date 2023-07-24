@@ -8,6 +8,7 @@ module.exports = {
       res.render('boards.ejs', { boards: boards });
     } catch (err) {
       console.log(err);
+      res.redirect('/login')
     }
   },
   getBoard: async (req, res) => {
