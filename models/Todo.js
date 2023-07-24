@@ -15,8 +15,7 @@ const TodoSchema = new mongoose.Schema({
   },
   board: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    ref: 'Board',
   },
   dateCreated: {
     type: Date,
