@@ -52,7 +52,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/', homeRoutes);
-app.use('/todo', todoRoutes)
+app.use('/todo', todoRoutes);
+app.use('/board', boardRoutes);
  
 app.listen(process.env.PORT, ()=>{
     console.log(`Server running on ${process.env.PORT}`)
