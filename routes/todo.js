@@ -7,7 +7,7 @@ router.get('/searchPhotos', todosController.searchPhotos)
 
 router.get('/', ensureAuth, todosController.getTodos);
 
-router.post('/createTodo', todosController.createTodo);
+router.post('/createTodo/:id', todosController.createTodo);
 
 router.put('/markTodo', todosController.markTodo);
 
