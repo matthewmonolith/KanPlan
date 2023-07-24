@@ -1,31 +1,26 @@
 const mongoose = require('mongoose');
 const TodoSchema = new mongoose.Schema({
-title: {
+  title: {
     type: String,
-    required: true
-},
-content: {
+    // required: true,
+  },
+  content: {
     type: String,
-    required: true
-},
-status: {
-    type: String, 
+    // required: true,
+  },
+  status: {
+    type: String,
     enum: ['todo'],
     default: 'todo',
-},
-dateCreated: {
+  },
+  board: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  dateCreated: {
     type: Date,
-    default: Date.now
-},
-userId: {
-    type: String,
-    required: true
-}
-//require userCreated after user login is implemented
-// userCreated: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'User',
-//     required: true,
-// }
-})
-module.exports = mongoose.model('Todo',TodoSchema);
+    default: Date.now,
+  },
+});
+module.exports = mongoose.model('Todo', TodoSchema);
