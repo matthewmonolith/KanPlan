@@ -12,7 +12,8 @@ module.exports = {
   },
   getBoard: async (req, res) => {
     const board = await Board.findById(req.params.id);
-    res.render('board.ejs', { board: board })
+    const todos = await Todo.find({ board: req.params.id }).lean();
+    res.render('board.ejs', { board: board, todos: todos })
   },
   createBoard: async (req, res) => {
     try {
