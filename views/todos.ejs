@@ -76,7 +76,7 @@
                     }); %>
                 </div>
                 <div class="divForForm">
-                <form class="toDoForm" action="/todo/createTodo" method="POST">
+                <form class="toDoForm" action="/todo/createTodo/<%= board._id %>" method="POST">
                         <input type="text" placeholder="Enter Todo Title" name="todoTitle">
                         <input type="text" placeholder="Enter Todo Content" name="todoItem">
                         <input type="submit" value="Add Item" class="submit">
