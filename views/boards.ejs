@@ -1,0 +1,18 @@
+<h1>Boards</h1>
+<form action="/board/createBoard" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" />
+  </div>
+  <button type="submit" class="btn btn-primary" value="Upload">
+    Create Board
+  </button>
+</form>
+
+<section>
+  <ul>
+    <%for(var i = 0; i < boards.length; i++){%>
+        <li><a href="/board/<%= boards[i]._id %>"><%=boards[i].title%></a></li>
+    <% } %>
+  </ul>
+</section>
