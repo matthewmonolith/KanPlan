@@ -37,7 +37,7 @@ async function deleteTodo(){
     const todoId = this.parentNode.parentNode.dataset.id
     console.log(todoId)
     try{
-        const response = await fetch('todo/deleteTodo', {
+        const response = await fetch('/todo/deleteTodo', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -60,7 +60,7 @@ async function markDoing() {
     const doingcolumn = document.getElementsByClassName('kanplan-column-doing')[0];
   
     try {
-      const response = await fetch('todo/markDoing', {
+      const response = await fetch('/todo/markDoing', {
         method: 'put',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
@@ -87,7 +87,7 @@ async function markDone(){ //function to add task to the done column
     const doneColumn = document.getElementsByClassName('kanplan-column-done')[0]
 
     try{
-        const response = await fetch('todo/markDone', {
+        const response = await fetch('/todo/markDone', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -136,7 +136,7 @@ function openModal() {
     const todoId = this.dataset.id; // Access the todo ID from the save button's data attribute
     
     try {
-      const response = await fetch('todo/updateContent', {
+      const response = await fetch('/todo/updateContent', {
         method: 'PUT',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
