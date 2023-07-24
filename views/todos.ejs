@@ -47,7 +47,9 @@
                     <% todos.forEach(el => {
                         if(el.status === 'todo') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
-                                <div class="cover-container"></div>
+                                <div class="cover-container">
+                                    <img src="<%= el.coverPhoto%>" alt="cover photo">
+                                </div>
                                 <span class="todo"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">

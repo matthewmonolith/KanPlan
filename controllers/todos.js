@@ -5,6 +5,7 @@ module.exports = {
     try {
       const allTodos = await Todo.find({userId:req.user.id});
       res.render('todos.ejs', {todos: allTodos})
+      
     } catch (error) {
       console.log(error);
     }
@@ -93,6 +94,17 @@ module.exports = {
       res.json({ photos })
     }
     catch (error) {
+      console.log(error)
+    }
+  },
+  updateCoverPhoto: async (req,res) => {
+    console.log(req.body.coverPhotoUrl)
+    try {
+      await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile}, {
+        coverPhoto: req.body.coverPhotoUrl
+      })
+      res.json('cover photo updated')
+    } catch (error) {
       console.log(error)
     }
   }

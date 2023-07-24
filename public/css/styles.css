@@ -408,13 +408,6 @@ a {
 }
 
 /* Change background */
-.cover-container {
-    height: 70px;
-    width: 100%;
-    text-align: center;
-    border-radius: 5px;
-}
-
 
 .back-button {
     align-self: flex-start;
@@ -539,4 +532,12 @@ a {
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/*Cover photo CSS*/
+.cover-container img{
+    height: 40%;
+    width: 30%;
+    text-align: center;
+    border-radius: 5px;
 }

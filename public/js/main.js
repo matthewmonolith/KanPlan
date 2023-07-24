@@ -9,7 +9,7 @@ const editTitleInput = document.getElementById('edit-title')
 const editContentTextarea = document.getElementById('edit-content');
 const saveButton = document.getElementById('save-button');
 const closeButton = document.querySelectorAll('.close-button')
-
+const changeCoverButton = document.getElementById('change-cover')
 const colSettingsModalButton = document.querySelectorAll('.kanplan-column-title')
 
 const formDisplayButton = document.querySelector('.display-form-button')
@@ -114,14 +114,16 @@ function openModal() {
     const todoId = todoItem.dataset.id;
     const title = todoItem.querySelector('span').textContent;
     const content = todoItem.querySelector('p').textContent;
-  
+	
+	 
     // put title and content of todo into the modal edit areas
     editTitleInput.value = title;
     editContentTextarea.value = content;
   
     // set the todo ID as a data attribute on the save button
     saveButton.dataset.id = todoId;
-  
+	changeCoverButton.dataset.id = todoId
+	console.log(changeCoverButton)
     modal.style.display = 'block';
 
     saveButton.addEventListener('click', saveChanges);
@@ -478,16 +480,29 @@ function displayPhotosSmall(data) {
 			img.src = photo.urls.small
 			img.alg = photo.alt_description
 
-			img.addEventListener('click', function () {
+			img.addEventListener('click', async function () {
 				const coverImg = new Image()
 				coverImg.src = photo.urls.small
-
-				coverImg.addEventListener('load', function () {
-					const coverContainer = document.querySelector('.cover-container')
-					coverContainer.style.backgroundImage = `url('${photo.urls.small}')`
-
-					localStorage.setItem('selectedCoverPhotoURL', photo.urls.small)
-				})
+				const anchorTag = this.closest('.modal-cover-photo').querySelector('#change-cover');
+				const todoId = anchorTag.dataset.id
+				console.log(todoId)
+				try {
+					const response = await fetch('todo/updateCoverPhoto', {
+					  method: 'PUT',
+					  headers: { 'Content-type': 'application/json' },
+					  body: JSON.stringify({
+						'todoIdFromJSFile': todoId,
+						'coverPhotoUrl': coverImg.src,
+					  }),
+					});
+				
+					const data = await response.json();
+					// Handle the response data or update the UI accordingly
+					console.log(data);
+					location.reload();
+				  } catch (error) {
+					console.log(error);
+				  }
 			})
 
 			const photographerLink = document.createElement('a');
@@ -521,24 +536,24 @@ function displayPhotosSmall(data) {
 	  console.log('Invalid data format:', data);
 	}
 
-	const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
-	const coverContainer = document.querySelector('.cover-container')
+	// const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
+	// const coverContainer = document.querySelector('.cover-container')
 
-	if (selectedCoverPhotoURL) {
-		coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
-	} else {
-		coverContainer.style.backgroundImage = 'none'
-	}
+	// if (selectedCoverPhotoURL) {
+	// 	coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
+	// } else {
+	// 	coverContainer.style.backgroundImage = 'none'
+	// }
 }
   
-window.addEventListener('DOMContentLoaded', () => {
-	const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
-	if (selectedCoverPhotoURL) {
-		const coverImg = new Image()
-		coverImg.src = selectedCoverPhotoURL
-		coverImg.addEventListener('load', function () {
-			const coverContainer = document.querySelector('.cover-container')
-			coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
-		})
-	}
-})
+// window.addEventListener('DOMContentLoaded', () => {
+// 	const selectedCoverPhotoURL = localStorage.getItem('selectedCoverPhotoURL')
+// 	if (selectedCoverPhotoURL) {
+// 		const coverImg = new Image()
+// 		coverImg.src = selectedCoverPhotoURL
+// 		coverImg.addEventListener('load', function () {
+// 			const coverContainer = document.querySelector('.cover-container')
+// 			coverContainer.style.backgroundImage = `url('${selectedCoverPhotoURL}')`
+// 		})
+// 	}
+// })
