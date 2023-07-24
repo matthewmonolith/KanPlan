@@ -15,10 +15,12 @@ module.exports = {
             title: req.body.todoTitle,
             content: req.body.todoItem, 
             status: 'todo',
-            userId: req.user.id
+            board: req.params.id
+            // userId: req.user.id
         })
         console.log('Todo Added')
-        res.redirect('/todo')
+        // res.redirect('/todo')
+        res.redirect('/board/' + req.params.id)
         document.querySelector('.display-form-button').style.display='block'
     } catch (error) {
         console.log(error);
