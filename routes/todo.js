@@ -17,6 +17,8 @@ router.put('/markDone', todosController.markDone);
 
 router.put('/updateContent', todosController.updateContent)
 
+router.put('/updateCoverPhoto', todosController.updateCoverPhoto);
+
 router.delete('/deleteTodo', todosController.deleteTodo);
 
 module.exports = router;

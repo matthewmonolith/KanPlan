@@ -97,5 +97,16 @@ module.exports = {
     catch (error) {
       console.log(error)
     }
+  },
+  updateCoverPhoto: async (req,res) => {
+    console.log(req.body.coverPhotoUrl)
+    try {
+      await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile}, {
+        coverPhoto: req.body.coverPhotoUrl
+      })
+      res.json('cover photo updated')
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

@@ -19,7 +19,18 @@ const TodoSchema = new mongoose.Schema({
   },
   dateCreated: {
     type: Date,
-    default: Date.now,
-  },
-});
-module.exports = mongoose.model('Todo', TodoSchema);
+    default: Date.now
+},
+coverPhoto: {
+    type: String,
+    required: false, // The coverPhoto is not required during initial creation
+    default: '' // Set the default value to an empty string
+  }
+//require userCreated after user login is implemented
+// userCreated: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User',
+//     required: true,
+// }
+})
+module.exports = mongoose.model('Todo',TodoSchema);
