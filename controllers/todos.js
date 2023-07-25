@@ -1,25 +1,26 @@
 const Todo = require('../models/Todo.js');
 
 module.exports = {
-  getTodos: async (req, res) => {
-    try {
-      const allTodos = await Todo.find({userId:req.user.id});
-      res.render('todos.ejs', {todos: allTodos})
-      
-    } catch (error) {
-      console.log(error);
-    }
-  },
+  // getTodos: async (req, res) => {
+  //   try {
+  //     const allTodos = await Todo.find({userId:req.user.id});
+  //     res.render('todos.ejs', {todos: allTodos})
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
   createTodo: async (req, res) => {
     try {
         await Todo.create({
             title: req.body.todoTitle,
             content: req.body.todoItem, 
             status: 'todo',
-            userId: req.user.id
+            board: req.params.id
+            // userId: req.user.id
         })
         console.log('Todo Added')
-        res.redirect('/todo')
+        // res.redirect('/todo')
+        res.redirect('/board/' + req.params.id)
         document.querySelector('.display-form-button').style.display='block'
     } catch (error) {
         console.log(error);

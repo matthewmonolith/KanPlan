@@ -9,6 +9,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todo')
+const boardRoutes = require('./routes/board')
 const { createApi } = require('unsplash-js')
 
 require('dotenv').config({path: './config/.env'})
@@ -51,7 +52,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/', homeRoutes);
-app.use('/todo', todoRoutes)
+app.use('/todo', todoRoutes);
+app.use('/board', boardRoutes);
  
 app.listen(process.env.PORT, ()=>{
     console.log(`Server running on ${process.env.PORT}`)

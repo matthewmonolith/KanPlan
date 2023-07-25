@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
 const TodoSchema = new mongoose.Schema({
-title: {
+  title: {
     type: String,
-    required: true
-},
-content: {
+    // required: true,
+  },
+  content: {
     type: String,
-    required: true
-},
-status: {
-    type: String, 
+    // required: true,
+  },
+  status: {
+    type: String,
     enum: ['todo'],
     default: 'todo',
-},
-dateCreated: {
+  },
+  board: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Board',
+  },
+  dateCreated: {
     type: Date,
     default: Date.now
-},
-userId: {
-    type: String,
-    required: true
 },
 coverPhoto: {
     type: String,

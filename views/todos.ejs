@@ -15,7 +15,7 @@
     <div class="background-container">
         <header class="header">
             <nav role="navigation" class="navbar">
-                <h1>KanPlan Board</h1> 
+                <h1><a href="/boards">KanPlan Board</a></h1> 
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <a href="#" id="settings-link">Settings</a>
@@ -78,7 +78,7 @@
                     }); %>
                 </div>
                 <div class="divForForm">
-                <form class="toDoForm" action="/todo/createTodo" method="POST">
+                <form class="toDoForm" action="/todo/createTodo/<%= board._id %>" method="POST">
                         <input type="text" placeholder="Enter Todo Title" name="todoTitle">
                         <input type="text" placeholder="Enter Todo Content" name="todoItem">
                         <input type="submit" value="Add Item" class="submit">
@@ -224,6 +224,6 @@
         </div>        
         </div>
     </div>
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
