@@ -393,7 +393,13 @@ function openSettingsMenu() {
 	const settingsText = document.createElement('span')
 	settingsText.textContent = 'Settings'
 
+	const changeBoardButton = document.createElement('a')
+	changeBoardButton.textContent = 'Change Board'
+	changeBoardButton.setAttribute('href', '/boards')
+	changeBoardButton.classList.add('change-board-button')
+
 	settingsOptions.appendChild(settingsText)
+	settingsOptions.appendChild(changeBoardButton)
 
 
 	// Append the new menu elements to the settings options container
