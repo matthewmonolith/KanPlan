@@ -12,7 +12,11 @@
 <section>
   <ul>
     <%for(var i = 0; i < boards.length; i++){%>
-        <li><a href="/board/<%= boards[i]._id %>"><%=boards[i].title%></a></li>
+        <li><a href="/board/<%= boards[i]._id %>"><%=boards[i].title%></a>
+          <form action="/board/deleteBoard/<%= boards[i]._id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+          </form>
+        </li>
     <% } %>
   </ul>
 </section>
