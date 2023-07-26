@@ -7,6 +7,6 @@ router.get('/:id', ensureAuth, boardsController.getBoard);
 
 router.post('/createBoard', boardsController.createBoard);
 
-// router.delete('/deleteTodo', boardsController.deleteBoard);
+router.delete('/deleteBoard/:id', boardsController.deleteBoard);
 
 module.exports = router;
