@@ -541,6 +541,27 @@ a {
     filter: grayscale(100%);
 }
 
+/* Settings Options */
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.settings-options > span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.change-board-button {
+    margin: 4rem;
+}
+
+.change-board-button:hover {
+    color: #56A3A6;
+}
+
 @media screen and (min-width: 768px){
     .column {
         max-width: 300px;
