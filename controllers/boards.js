@@ -5,7 +5,7 @@ module.exports = {
   getAllBoards: async (req, res) => {
     try {
       const boards = await Board.find({user: req.user.id}).sort({ createdAt: 'desc' }).lean();
-      res.render('boards.ejs', { boards: boards });
+      res.render('boards.ejs', { boards: boards, userName: req.user.userName });
     } catch (err) {
       console.log(err);
       res.redirect('/login')
