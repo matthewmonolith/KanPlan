@@ -14,7 +14,7 @@
             Change Your Username</h1>
         <p>Already have an account? <a href="/login">Sign in</a>.</p>
 
-    <form class="change-username__form" action="/updateUsername" method="POST">
+    <form class="change-username__form" action="/updateUsername?_method=PUT" method="POST">
         <input type="text" name="newUserName" placeholder="New Username">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirmPassword" placeholder="Confirm Password">

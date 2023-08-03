@@ -13,5 +13,6 @@ router.get('/logout', authController.logout)
 router.get('/signup', authController.getSignup)
 router.post('/signup', authController.postSignup)
 router.get('/changeUsername', ensureAuth, authController.changeUsername)
+router.put('/updateUsername', ensureAuth, authController.updateUsername)
 
 module.exports = router

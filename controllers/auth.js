@@ -109,3 +109,28 @@ const User = require('../models/User')
       title: 'Change Username'
     })
   }
+
+  exports.updateUsername = async (req, res, next) => {
+    try {
+      console.log('Request Method:', req.method)
+      const { newUserName } = req.body
+      
+      if (!req.user) {
+        return res.status(401).json({ message: 'You are not logged in.' })
+      }
+
+      const authenticatedUser = await User.findById(req.user.id)
+
+      authenticatedUser.userName = newUserName
+      
+      await authenticatedUser.save()
+
+      res.redirect('/boards')
+
+      console.log('Updated User:', authenticatedUser)
+
+      res.json({ message: 'Username updated successfully. '})
+    } catch (error) {
+      next(error)
+    }
+  }
