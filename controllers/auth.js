@@ -103,3 +103,9 @@ const User = require('../models/User')
       next(error);
     }
   };  
+
+  exports.changeUsername = (req, res) => {
+    res.render('changeUsername', {
+      title: 'Change Username'
+    })
+  }
