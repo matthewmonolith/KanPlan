@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/login.css">
 </head>
-<body class="login">
+<body class="change-username">
     <main>
         <h1>Welcome to Kanplan <br> 
-            Sign up to continue.</h1>
+            Change Your Username</h1>
         <p>Already have an account? <a href="/login">Sign in</a>.</p>
 
-    <form class="login__form" action="/signup" method="POST">
-        <input type="text" name="userName" placeholder="Username">
-        <input type="email" name="email" placeholder="Email">
+    <form class="change-username__form" action="/updateUsername" method="POST">
+        <input type="text" name="newUserName" placeholder="New Username">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input class="login__button" type="submit">
+        <input class="change-username__button" type="submit" value="Change Username">
     </form>
     </main>
 </body>
