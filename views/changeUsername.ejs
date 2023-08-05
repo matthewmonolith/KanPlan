@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanplan - Change Username</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="change-username">
+    <main>
+        <h1>Welcome to Kanplan <br> 
+            Change Your Username</h1>
+        <p>Already have an account? <a href="/login">Sign in</a>.</p>
+
+    <form class="change-username__form" action="/updateUsername?_method=PUT" method="POST">
+        <input type="text" name="newUserName" placeholder="New Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="confirmPassword" placeholder="Confirm Password">
+        <input class="change-username__button" type="submit" value="Change Username">
+    </form>
+    </main>
+</body>
+</html>

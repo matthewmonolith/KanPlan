@@ -558,10 +558,10 @@ a {
     margin: 4rem;
 }
 
-.change-board-button:hover {
+.change-board-button:hover,
+.change-username-button:hover {
     color: #56A3A6;
 }
-
 @media screen and (min-width: 768px){
     .column {
         max-width: 300px;

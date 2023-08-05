@@ -27,3 +27,33 @@
     cursor: pointer;
     text-transform: uppercase;
 }
+
+.change-username{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-username__form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.change-username input{
+    padding: .5rem;
+}
+
+.change-username a {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.change-username__button{
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
