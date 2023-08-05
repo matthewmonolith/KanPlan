@@ -1,13 +1,15 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const ErrorHandler = require('../middleware/errorHandler');
 
  exports.getLogin = (req, res) => {
     if (req.user) {
       return res.redirect('/boards')
     }
     res.render('login', {
-      title: 'Login'
+      title: 'Login',
+      message: req.flash('errors') // Pass the flash error message to the view 
     })
   }
   
@@ -51,9 +53,16 @@ const User = require('../models/User')
     if (req.user) {
       return res.redirect('/boards')
     }
-    res.render('signup', {
-      title: 'Create Account'
-    })
+    try {
+      res.render('signup', {
+        title: 'Create Account',
+        message: req.flash('errors')
+      });
+    } catch (error){
+       // If an error occurs during rendering, pass it to the ErrorHandler middleware
+      next(error);
+    }
+   
   }
 
   exports.postSignup = async (req, res, next) => {

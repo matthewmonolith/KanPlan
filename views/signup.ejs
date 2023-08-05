@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kanplan - signup</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/login.css">
-</head>
-<body class="login">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body class="login">
     <main>
-        <h1>Welcome to Kanplan <br> 
-            Sign up to continue.</h1>
-        <p>Already have an account? <a href="/login">Sign in</a>.</p>
-
-    <form class="login__form" action="/signup" method="POST">
-        <input type="text" name="userName" placeholder="Username">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input class="login__button" type="submit">
-    </form>
+      <h1>
+        Welcome to Kanplan <br />
+        Sign up to continue.
+      </h1>
+      <p>Already have an account? <a href="/login">Sign in</a>.</p>
+      <%- include('partials/error', { message: message }) -%>
+      <form class="login__form" action="/signup" method="POST">
+        <input type="text" required name="userName" placeholder="Username" />
+        <input type="email" required name="email" placeholder="Email" />
+        <input
+          type="password"
+          required
+          minlength="8"
+          name="password"
+          placeholder="Password"
+        />
+        <input
+          type="password"
+          required
+          name="confirmPassword"
+          placeholder="Confirm Password"
+        />
+        <input class="login__button" type="submit" />
+      </form>
     </main>
-</body>
+  </body>
 </html>
