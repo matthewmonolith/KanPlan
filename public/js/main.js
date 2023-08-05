@@ -398,8 +398,14 @@ function openSettingsMenu() {
 	changeBoardButton.setAttribute('href', '/boards')
 	changeBoardButton.classList.add('change-board-button')
 
+	const changeUsername = document.createElement('a')
+	changeUsername.textContent = 'Change Username'
+	changeUsername.setAttribute('href', '/changeUsername')
+	changeUsername.classList.add('change-username-button')
+
 	settingsOptions.appendChild(settingsText)
 	settingsOptions.appendChild(changeBoardButton)
+	settingsOptions.appendChild(changeUsername)
 
 
 	// Append the new menu elements to the settings options container
