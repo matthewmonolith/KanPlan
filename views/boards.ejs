@@ -16,6 +16,11 @@
           <form action="/board/deleteBoard/<%= boards[i]._id %>?_method=DELETE" method="POST">
             <button>Delete</button>
           </form>
+          <form action="/board/updateTitle/<%= boards[i]._id %>?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="text" placeholder="Enter a new title" name="title">
+            <button>Update Title</button>
+          </form>
         </li>
     <% } %>
   </ul>
