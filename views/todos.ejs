@@ -125,7 +125,9 @@
                     <% todos.forEach(el => {
                         if(el.status === 'doing') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
-                                <div class="cover-container"></div>
+                                <div class="cover-container">
+                                    <img src="<%= el.coverPhoto%>" alt="cover photo">
+                                </div>
                                 <span class="doing"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">
@@ -177,7 +179,9 @@
                     <% todos.forEach(el => {
                         if(el.status === 'done') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
-                                <div class="cover-container"></div>
+                                <div class="cover-container">
+                                    <img src="<%= el.coverPhoto%>" alt="cover photo">
+                                </div>
                                 <span class="done"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
                                 <div class="icon-container">

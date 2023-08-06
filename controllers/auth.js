@@ -1,13 +1,15 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const ErrorHandler = require('../middleware/errorHandler');
 
  exports.getLogin = (req, res) => {
     if (req.user) {
       return res.redirect('/boards')
     }
     res.render('login', {
-      title: 'Login'
+      title: 'Login',
+      message: req.flash('errors') // Pass the flash error message to the view 
     })
   }
   
@@ -51,9 +53,16 @@ const User = require('../models/User')
     if (req.user) {
       return res.redirect('/boards')
     }
-    res.render('signup', {
-      title: 'Create Account'
-    })
+    try {
+      res.render('signup', {
+        title: 'Create Account',
+        message: req.flash('errors')
+      });
+    } catch (error){
+       // If an error occurs during rendering, pass it to the ErrorHandler middleware
+      next(error);
+    }
+   
   }
 
   exports.postSignup = async (req, res, next) => {
@@ -103,3 +112,31 @@ const User = require('../models/User')
       next(error);
     }
   };  
+
+  exports.changeUsername = (req, res) => {
+    res.render('changeUsername', {
+      title: 'Change Username'
+    })
+  }
+
+  exports.updateUsername = async (req, res, next) => {
+    try {
+      const { newUserName } = req.body
+      
+      if (!req.user) {
+        return res.status(401).json({ message: 'You are not logged in.' })
+      }
+
+      const authenticatedUser = await User.findById(req.user.id)
+
+      authenticatedUser.userName = newUserName
+      
+      await authenticatedUser.save()
+
+      res.redirect('/boards')
+
+      res.json({ message: 'Username updated successfully. '})
+    } catch (error) {
+      next(error)
+    }
+  }

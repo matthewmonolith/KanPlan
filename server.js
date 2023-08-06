@@ -12,6 +12,8 @@ const homeRoutes = require('./routes/home')
 const todoRoutes = require('./routes/todo')
 const boardRoutes = require('./routes/board')
 const { createApi } = require('unsplash-js')
+const ErrorHandler = require("./middleware/errorHandler");
+const methodOverride = require('method-override')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -24,7 +26,8 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
-app.use(methodOverride("_method"));
+
+app.use(methodOverride("_method"))
 
 // Sessions
 app.use(
@@ -57,6 +60,9 @@ app.use((req, res, next) => {
 app.use('/', homeRoutes);
 app.use('/todo', todoRoutes);
 app.use('/board', boardRoutes);
+
+// Error handler middleware should be the last middleware to use 
+app.use(ErrorHandler);
  
 app.listen(process.env.PORT, ()=>{
     console.log(`Server running on ${process.env.PORT}`)
