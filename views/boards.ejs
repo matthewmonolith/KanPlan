@@ -12,7 +12,16 @@
 <section>
   <ul>
     <%for(var i = 0; i < boards.length; i++){%>
-        <li><a href="/board/<%= boards[i]._id %>"><%=boards[i].title%></a></li>
+        <li><a href="/board/<%= boards[i]._id %>"><%=boards[i].title%></a>
+          <form action="/board/deleteBoard/<%= boards[i]._id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+          </form>
+          <form action="/board/updateTitle/<%= boards[i]._id %>?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="text" placeholder="Enter a new title" name="title">
+            <button>Update Title</button>
+          </form>
+        </li>
     <% } %>
   </ul>
 </section>

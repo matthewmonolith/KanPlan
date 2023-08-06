@@ -29,4 +29,21 @@ module.exports = {
       console.log(err);
     }
   },
+  updateTitle: async (req, res) => {
+    try {
+      await Board.findByIdAndUpdate(req.params.id, { $set: { title: req.body.title } })
+      res.redirect('/boards')
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  deleteBoard: async (req, res) => {
+    try {
+      await Board.findByIdAndRemove({ _id: req.params.id });
+      await Todo.deleteMany({ board: req.params.id })
+      res.redirect('/boards')
+    } catch (err) {
+      console.log(err)
+    }
+  }
 };
