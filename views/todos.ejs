@@ -27,6 +27,9 @@
                         <a href="#">Share Board</a>
                     </li>
                     <li class="nav-item">
+                        <a href="#" id="user-guide">User Guide</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/logout">Logout</a>
                     </li>
                 </ul>
@@ -48,7 +51,7 @@
                         if(el.status === 'todo') { %>
                             <li class="todoItem li-todo" data-id="<%= el._id %>">
                                 <div class="cover-container">
-                                    <img src="<%= el.coverPhoto%>" alt="cover photo">
+                                    <img src="<%= el.coverPhoto%>" alt="cover photo" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=='">
                                 </div>
                                 <span class="todo"><%= el.title %></span>
                                 <p class="todo-content"><%= el.content %></p>
@@ -70,7 +73,7 @@
                                         <button id="save-button">Save Changes</button>
                                     </div>
                                     <div class="modal-cover-photo">
-                                        <a href="#" id="change-cover">Add a cover photo</a>
+                                        <a href="#" id="change-cover">Add or change todo cover photo</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,23 +96,6 @@
                     <div class="modal-header">
                         <h3>Click to change the column's colour</h3>
                         <button class="close-button">&times;</button>
-                    </div>
-                    <div class="colour-picker">
-                        <div class="colour-picker-box">
-                            <span>Earthy Red</span>
-                        </div>
-                        <div class="colour-picker-box">
-                            <span>Sage Green</span>
-                        </div>
-                        <div class="colour-picker-box">
-                            <span>Navy Blue</span>
-                        </div>
-                        <div class="colour-picker-box">
-                            <span>Orange</span>
-                        </div>
-                        <div class="colour-picker-box">
-                            <span>Gray</span>
-                        </div>
                     </div>
                 </div>
             </div>

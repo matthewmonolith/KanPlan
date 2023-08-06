@@ -415,16 +415,57 @@ function backToMainMenu() {
 	// Remove the settings menu elements
 	const backButton = document.querySelector('.back-button');
 	const settingsOptions = document.querySelector('.settings-options')
-
   
 	backButton.remove();
 	settingsOptions.remove()
-
   
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'block');
 }
+
+//User Guide Menu
+const userGuideLink = document.querySelector('#user-guide');
+userGuideLink.addEventListener('click', openUserGuide)
+
+function openUserGuide(){
+	const menuItems = document.querySelectorAll('.nav-item');
+	menuItems.forEach(item => item.style.display = 'none');
+	openMenu();
+
+	const backButton = document.createElement('div');
+	backButton.classList.add('back-button');
+	backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+
+	const userGuideOptions = document.createElement('div')
+	userGuideOptions.classList.add('settings-options')
+
+	const userGuideText = document.createElement('span')
+	userGuideText.textContent = 'User Guide - How To Use Kanplan'
+
+	const howToCreateTodo = document.createElement('a')
+	howToCreateTodo.textContent = 'How To Create Todos and Update Their Status'
+	howToCreateTodo.classList.add('change-board-button')
+
+	const howToEditColumns = document.createElement('a')
+	howToEditColumns.textContent = 'How To Customise Your Columns'
+	howToEditColumns.classList.add('change-board-button')
+
+	userGuideOptions.appendChild(userGuideText)
+	userGuideOptions.appendChild(howToCreateTodo)
+	userGuideOptions.appendChild(howToEditColumns)
+
+	const userGuideContainer = document.querySelector('.nav-menu')
+	userGuideContainer.appendChild(backButton)
+	userGuideContainer.appendChild(userGuideOptions)
+
+
+
+	backButton.addEventListener('click', backToMainMenu);
+}
+
+
+
 
 
 
