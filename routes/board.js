@@ -9,4 +9,6 @@ router.post('/createBoard', boardsController.createBoard);
 
 router.delete('/deleteBoard/:id', boardsController.deleteBoard);
 
+router.put('/updateTitle/:id', boardsController.updateTitle);
+
 module.exports = router;
