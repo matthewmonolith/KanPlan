@@ -146,3 +146,25 @@ const ErrorHandler = require('../middleware/errorHandler');
       title: 'Change Password'
     })
   }
+
+  exports.updatePassword = async (req, res, next) => {
+    try {
+      const { newPassword } = req.body
+      
+      if (!req.user) {
+        return res.status(401).json({ message: 'You are not logged in.' })
+      }
+
+      const authenticatedUser = await User.findById(req.user.id)
+
+      authenticatedUser.password = newPassword
+      
+      await authenticatedUser.save()
+
+      res.redirect('/boards')
+
+      res.json({ message: 'Password updated successfully. '})
+    } catch (error) {
+      next(error)
+    }
+  }
