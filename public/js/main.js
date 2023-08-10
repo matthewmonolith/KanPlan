@@ -403,9 +403,15 @@ function openSettingsMenu() {
 	changeUsername.setAttribute('href', '/changeUsername')
 	changeUsername.classList.add('change-username-button')
 
+	const changePassword = document.createElement('a')
+	changePassword.textContent = 'Change Password'
+	changePassword.setAttribute('href', '/changePassword')
+	changePassword.classList.add('change-password-button')
+
 	settingsOptions.appendChild(settingsText)
 	settingsOptions.appendChild(changeBoardButton)
 	settingsOptions.appendChild(changeUsername)
+	settingsOptions.appendChild(changePassword)
 
 
 	// Append the new menu elements to the settings options container
