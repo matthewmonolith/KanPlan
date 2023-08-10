@@ -140,3 +140,9 @@ const ErrorHandler = require('../middleware/errorHandler');
       next(error)
     }
   }
+
+  exports.changePassword = (req, res) => {
+    res.render('changePassword', {
+      title: 'Change Password'
+    })
+  }
