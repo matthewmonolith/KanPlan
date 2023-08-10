@@ -135,7 +135,7 @@ const ErrorHandler = require('../middleware/errorHandler');
 
       res.redirect('/boards')
 
-      res.json({ message: 'Username updated successfully. '})
+      // res.json({ message: 'Username updated successfully. '})
     } catch (error) {
       next(error)
     }
@@ -163,7 +163,7 @@ const ErrorHandler = require('../middleware/errorHandler');
 
       res.redirect('/boards')
 
-      res.json({ message: 'Password updated successfully. '})
+      // res.json({ message: 'Password updated successfully. '})
     } catch (error) {
       next(error)
     }
