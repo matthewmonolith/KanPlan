@@ -14,5 +14,7 @@ router.get('/signup', authController.getSignup)
 router.post('/signup', authController.postSignup)
 router.get('/changeUsername', ensureAuth, authController.changeUsername)
 router.put('/updateUsername', ensureAuth, authController.updateUsername)
+router.get('/changePassword', ensureAuth, authController.changePassword)
+router.put('/updatePassword', ensureAuth, authController.updatePassword)
 
 module.exports = router
