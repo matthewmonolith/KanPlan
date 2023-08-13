@@ -192,7 +192,8 @@ form input {
 }
 
 .update-btn:active {
-    transform: translateY(0.1em);
+    transform: translateX(-0.2em);
+    transition: 200ms;
 }
 
 .container {
