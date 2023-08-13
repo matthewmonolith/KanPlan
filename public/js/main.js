@@ -427,10 +427,11 @@ function backToMainMenu() {
 	// Remove the settings menu elements
 	const backButton = document.querySelector('.back-button');
 	const settingsOptions = document.querySelector('.settings-options')
-  
+	const todoGuide = document.querySelector('.todo-guide')
+
 	backButton.remove();
-	settingsOptions.remove()
-  
+	settingsOptions.remove();
+	todoGuide.remove();
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'block');
@@ -466,7 +467,7 @@ function openUserGuide(){
 		menuItemsToHide.style.display = 'none';
 
 		const createTodoGuide = document.createElement('div');
-		createTodoGuide.classList.add('settings-options');
+		createTodoGuide.classList.add('todo-guide');
 		const createTodoHeadingOne = document.createElement('h2')
 		createTodoHeadingOne.textContent = 'Creating a Todo Item'
 		createTodoGuide.appendChild(createTodoHeadingOne)
@@ -486,10 +487,12 @@ function openUserGuide(){
 		howToGuideList.appendChild(howToUpdate)
 
 		const howToEdit = document.createElement('li');
-		howToEdit.textContent = 'To edit the header and content of your todo item, hover over your todo and click the edit icon (see image below). Clicking will show a box at the forefront of your screen, where you can edit the item. Once you have decided on your change, just click "save changes" to update the todo.'
+		howToEdit.textContent = 'To edit the header and content of your todo item, hover over your todo and click the edit icon (see image below). Clicking will show a box at the forefront of your screen, where you can edit the item. Once you have decided on your change, just click "save changes" to update the todo. As well, you can upload a cover photo to your todo using Unsplash\' API, click the "Add or change todo cover photo" button and search keyword to find an image you would like. Clicking on one of the search images will make it the respective todo\' cover photo.'
 		howToGuideList.appendChild(howToEdit)
 
-
+		const howToDelete = document.createElement('li')
+		howToDelete.textContent = 'To Delete the todo, hover over your todo and click the delete icon, this will remove it from your kanplan.'
+		howToGuideList.appendChild(howToDelete)
 		createTodoGuide.appendChild(howToGuideList);
 		
 
