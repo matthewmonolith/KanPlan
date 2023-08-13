@@ -459,6 +459,50 @@ function openUserGuide(){
 	howToCreateTodo.textContent = 'How To Create Todos and Update Their Status'
 	howToCreateTodo.classList.add('change-board-button')
 
+	howToCreateTodo.addEventListener('click', function(){
+		//because these elements are created dynamically by JS, it has to ensure the elements I want to hide are created first, so I cannot do .addEventListener('click', openCreateTodoGuide)
+		const menuItemsToHide = document.querySelector('.settings-options');
+		if (menuItemsToHide) {
+		menuItemsToHide.style.display = 'none';
+
+		const createTodoGuide = document.createElement('div');
+		createTodoGuide.classList.add('settings-options');
+		const createTodoHeadingOne = document.createElement('h2')
+		createTodoHeadingOne.textContent = 'Creating a Todo Item'
+		createTodoGuide.appendChild(createTodoHeadingOne)
+
+		const howToGuideList = document.createElement('ol');
+		
+		
+		const howToCreateTodoTutorial = document.createElement('li');
+		howToCreateTodoTutorial.textContent = 'To create a todo item, simply click the "Click to add a Todo" button in the first column. Two boxes and a button will appear in the same column, you must add a title for your todo item and its content. Then just click the "Add item" button and the todo item will be added to the ToDo column.';
+		howToGuideList.appendChild(howToCreateTodoTutorial);
+
+		const howToUpdate = document.createElement('li');
+		const createTodoHeadingTwo = document.createElement('h2');
+		createTodoHeadingTwo.textContent = 'Updating and Editing'
+		howToUpdate.appendChild(createTodoHeadingTwo)
+		howToUpdate.textContent = 'To update the status of the todo item, for example from the Todo column to the Doing column, hover over the todo item you want to update, and click on its heading/text content.'
+		howToGuideList.appendChild(howToUpdate)
+
+		const howToEdit = document.createElement('li');
+		howToEdit.textContent = 'To edit the header and content of your todo item, hover over your todo and click the edit icon (see image below). Clicking will show a box at the forefront of your screen, where you can edit the item. Once you have decided on your change, just click "save changes" to update the todo.'
+		howToGuideList.appendChild(howToEdit)
+
+
+		createTodoGuide.appendChild(howToGuideList);
+		
+
+
+
+		const howToCreateTodoContainer = document.querySelector('.nav-menu');
+		howToCreateTodoContainer.appendChild(createTodoGuide);
+
+		}else {
+			console.log('Element has not been generated yet')
+		}
+	})
+
 	const howToEditColumns = document.createElement('a')
 	howToEditColumns.textContent = 'How To Customise Your Columns'
 	howToEditColumns.classList.add('change-board-button')
@@ -476,7 +520,10 @@ function openUserGuide(){
 	backButton.addEventListener('click', backToMainMenu);
 }
 
-
+//User Guide - Create Todo 
+// function openCreateTodoGuide(){
+// 	document.getElementsByClassName('change-board-button').style.display = 'none'
+// }
 
 
 
