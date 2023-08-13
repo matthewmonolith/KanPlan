@@ -92,13 +92,19 @@ li {
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+.board span {
+    text-align: center;
 }
 
 .board:hover {
     background-color: rgba(181, 181, 181, 0.8);
 }
 
-.board:active {
+.board:focus-within {
     background-color: rgba(181, 181, 181, 0.5);
 }
 
