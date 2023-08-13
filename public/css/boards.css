@@ -1,0 +1,191 @@
+*, *:after, *:before, *:active, *:hover {
+    transition: 200ms;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Merriweather Sans', sans-serif;
+    gap: 2em;
+}
+
+a {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    color: unset;
+}
+
+li {
+    list-style: none;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form input {
+    all: unset;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-radius: 0.25em 0 0 0.25em;
+    padding: 0.3em;
+}
+
+.form-button {
+    all: unset;
+    background: gray;
+    color: white;
+    border-radius: 0 0.25em 0.25em 0;
+    border: 1px solid black;
+    font-size: 0.9rem;
+    padding: 0.4em;
+    cursor: pointer;
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    flex: 1;
+}
+
+.boards-ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.board {
+    background-color: rgba(181, 181, 181, 1);
+    border-radius: 0.4em;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.board:hover {
+    background-color: rgba(181, 181, 181, 0.8);
+}
+
+.board:active {
+    background-color: rgba(181, 181, 181, 0.5);
+}
+
+.dropdown-btn {
+    all: unset;
+    cursor: pointer;
+    padding: 0 0.25em;
+}
+
+.dropdown-btn svg {
+    fill: rgb(0, 0, 0);
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.dropdown-btn svg:hover {
+    transform: rotate(30deg);
+}
+
+.dropdown-btn:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    position: absolute;
+    background: white;
+    border: 1px solid black;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    visibility: hidden;
+    right: 0;
+    transform: translateY(-1em);
+    opacity: 0;
+}
+
+.board-delete-btn {
+    all: unset;
+    cursor: pointer;
+}
+
+.board-delete-btn:hover {
+    transform: translateY(-0.1em);
+    transition: 200ms;
+}
+
+.board-delete-btn:active {
+    transform: translateY(-0.3em);
+    transition: 200ms;
+}
+
+.board-delete-btn svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.update-title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+form input {
+    all: unset;
+    border: 1px solid black;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    font-size: 0.9rem;
+}
+
+.update-btn {
+    all: unset;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 0.2em;
+    font-size: 0.9rem;
+    margin-top: 0.25em;
+    border-radius: 0.25em;
+}
+
+.update-btn:hover {
+    background: black;
+    color: white;
+}
+
+.update-btn:active {
+    transform: translateY(0.1em);
+}
+
+.container {
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+    right: 0;
+}
+
+.container:hover .dropdown {
+    display: block;
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+}
