@@ -49,13 +49,23 @@ li {
 
 .form-button {
     all: unset;
-    background: gray;
+    background: rgba(51, 51, 51, 0.50);
     color: white;
     border-radius: 0 0.25em 0.25em 0;
     border: 1px solid black;
     font-size: 0.9rem;
     padding: 0.4em;
     cursor: pointer;
+    transition: 200ms;
+}
+
+.form-button:hover {
+    background: #56A3A6;
+}
+
+.form-button:active{
+    transform: translateX(-0.2em);
+    opacity: 0.5;
 }
 
 .section {
