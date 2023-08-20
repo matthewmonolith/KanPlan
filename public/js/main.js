@@ -472,33 +472,32 @@ function openUserGuide(){
 		const createTodoGuide = document.createElement('div');
 		createTodoGuide.classList.add('todo-guide');
 		const createTodoHeadingOne = document.createElement('h2')
-		createTodoHeadingOne.textContent = 'Creating a Todo Item'
+		createTodoHeadingOne.textContent = 'Creating, editing and deleting a Todo Item'
 		createTodoGuide.appendChild(createTodoHeadingOne)
 
 		const howToGuideList = document.createElement('ol');
-		
+		howToGuideList.classList.add('step-by-step')
 		
 		const howToCreateTodoTutorial = document.createElement('li');
 		howToCreateTodoTutorial.textContent = 'To create a todo item, simply click the "Click to add a Todo" button in the first column. Two boxes and a button will appear in the same column, you must add a title for your todo item and its content. Then just click the "Add item" button and the todo item will be added to the ToDo column.';
+		howToCreateTodoTutorial.classList.add('step')
 		howToGuideList.appendChild(howToCreateTodoTutorial);
 
 		const howToUpdate = document.createElement('li');
-		const createTodoHeadingTwo = document.createElement('h2');
-		createTodoHeadingTwo.textContent = 'Updating and Editing'
-		howToUpdate.appendChild(createTodoHeadingTwo)
 		howToUpdate.textContent = 'To update the status of the todo item, for example from the Todo column to the Doing column, hover over the todo item you want to update, and click on its heading/text content.'
+		howToUpdate.classList.add('step')
 		howToGuideList.appendChild(howToUpdate)
 
 		const howToEdit = document.createElement('li');
 		howToEdit.textContent = 'To edit the header and content of your todo item, hover over your todo and click the edit icon (see image below). Clicking will show a box at the forefront of your screen, where you can edit the item. Once you have decided on your change, just click "save changes" to update the todo. As well, you can upload a cover photo to your todo using Unsplash\' API, click the "Add or change todo cover photo" button and search keyword to find an image you would like. Clicking on one of the search images will make it the respective todo\' cover photo.'
+		howToEdit.classList.add('step')
 		howToGuideList.appendChild(howToEdit)
 
 		const howToDelete = document.createElement('li')
-		howToDelete.textContent = 'To Delete the todo, hover over your todo and click the delete icon, this will remove it from your kanplan.'
+		howToDelete.textContent = 'To delete the todo, hover over your todo and click the delete icon, this will remove it from your kanplan.'
+		howToDelete.classList.add('step')
 		howToGuideList.appendChild(howToDelete)
 		createTodoGuide.appendChild(howToGuideList);
-		
-
 
 
 		const howToCreateTodoContainer = document.querySelector('.nav-menu');
