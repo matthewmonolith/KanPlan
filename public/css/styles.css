@@ -612,12 +612,14 @@ a {
     padding: 0;
     max-width: 560px;
     font-family: Arial, sans-serif;
+    overflow-x: scroll;
   }
   
   .step {
     display: flex;
     align-items: center;
     padding: 12px 0;
+    font-size: 0.8rem;
   }
   
   .step::before {
