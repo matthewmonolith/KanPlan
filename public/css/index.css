@@ -35,8 +35,7 @@ nav li {
 }
 
 .container__text{
-    /* max-width: 50%; */
-    text-align: center;
+    text-align: justify;
     min-width: 25em;
 }
 
