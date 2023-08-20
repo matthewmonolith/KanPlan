@@ -427,11 +427,14 @@ function backToMainMenu() {
 	// Remove the settings menu elements
 	const backButton = document.querySelector('.back-button');
 	const settingsOptions = document.querySelector('.settings-options')
+
 	const todoGuide = document.querySelector('.todo-guide')
+	if(todoGuide){
+		todoGuide.remove();
+	}
 
 	backButton.remove();
 	settingsOptions.remove();
-	todoGuide.remove();
 	// Show the original menu items
 	const menuItems = document.querySelectorAll('.nav-item');
 	menuItems.forEach(item => item.style.display = 'block');
