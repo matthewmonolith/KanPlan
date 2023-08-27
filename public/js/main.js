@@ -511,6 +511,36 @@ function openUserGuide(){
 	const howToEditColumns = document.createElement('a')
 	howToEditColumns.textContent = 'How To Customise Your Columns'
 	howToEditColumns.classList.add('change-board-button')
+	howToEditColumns.addEventListener('click', function(){
+		const menuItemsToHide = document.querySelector('.settings-options');
+		if (menuItemsToHide) {
+		menuItemsToHide.style.display = 'none';
+
+		const createTodoGuide = document.createElement('div');
+		createTodoGuide.classList.add('todo-guide');
+		const createTodoHeadingOne = document.createElement('h2')
+		createTodoHeadingOne.textContent = 'How To Edit Your Column (feature coming soon!)'
+		createTodoGuide.appendChild(createTodoHeadingOne)
+
+		const howToGuideList = document.createElement('ol');
+		howToGuideList.classList.add('step-by-step')
+		
+		const howToCreateTodoTutorial = document.createElement('li');
+		howToCreateTodoTutorial.textContent = 'To edit your column, simply click on the column\'s title to open up the column editor modal box. In here you can change the column\'s colour, in the future we hope to add the ability to change its title, and add new columns too!';
+		howToCreateTodoTutorial.classList.add('step')
+		howToGuideList.appendChild(howToCreateTodoTutorial);
+
+		createTodoGuide.appendChild(howToGuideList);
+
+
+		const howToCreateTodoContainer = document.querySelector('.nav-menu');
+		howToCreateTodoContainer.appendChild(createTodoGuide);
+
+		}else {
+			console.log('Element has not been generated yet')
+		}
+	})
+
 
 	userGuideOptions.appendChild(userGuideText)
 	userGuideOptions.appendChild(howToCreateTodo)
